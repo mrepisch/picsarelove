@@ -1,9 +1,9 @@
 <?php
 class Dispatcher{
 	function loadDefault() {
-		require_once "control/DefaultController.php";
-		$cont = new DefaultControler();
-		$cont->run();
+		require_once "control/PictureController.php";
+		$cont = new PictureController();
+		$cont->show_all();
 	}
 	
 	function dispatch(){

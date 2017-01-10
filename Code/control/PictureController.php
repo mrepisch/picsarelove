@@ -30,7 +30,7 @@ class PictureController {
 		
 		$pictureModel = new PictureModel();
 		$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
-		header("Location:index.php");
+		header("Location:index.php?page=1");
 	}
 	
 	function displayForm() {
@@ -43,7 +43,11 @@ class PictureController {
 	}
 	
 	function show_all() {
-		$page = $_GET["page"];
+		$page = 1;
+		if( isset( $_GET["page"])) {
+			$page = $_GET["page"];
+		}
+		
 		$view = new View("view/main_content.php");
 		$pictureModel = new PictureModel();
 		$rows = $pictureModel->readAll(20,( intval($page) - 1 ) * 20);
