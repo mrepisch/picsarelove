@@ -5,7 +5,7 @@ require_once 'model/PictureModel.php';
 class PictureController {
 	
 	function upload() {
-		$targetdir = '/pictures/';
+		$targetdir = 'pictures/';
 		$targetfile = $targetdir.$_FILES['picture']['name'];
 		
 		if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetfile)) {
