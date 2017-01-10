@@ -2,16 +2,21 @@ body {
 	background-color: #EEEFF7;
 	text-align: center;
 	font-family: "Arial", sans-serif;
+	color: #B3B3B3;
 }
 #page {
 	display: block;
 }
+
 #content {
+	overflow: auto;
 	text-align: center;
 	background-color: #31353D;
 	width: 70%;
 	height: auto;
 	margin-left: 15%;
+	margin-right: 15%;
+	margin-top: 20px;
 }
 #comment {
 	width: 200px;
@@ -24,6 +29,40 @@ body {
 #comment p {
 	float: right;
 }
+
+#register {
+	margin-left: 400px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: left;
+	width: 500px;
+}
+
+
+/* Anfang basische Tags */
+
+img {
+	width: 500px;
+	height: auto;
+}
+h3 {
+	font-size: 34px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+h4 {
+	font-size: 16px;
+}
+h5 {
+	font-size: 14px;
+	display: inline;
+}
+p {
+	font-size: 14px;
+	display: inline;
+}
+
+/* Ende basische Tags */
 
 
 /* Anfang Navigations-Leiste */
@@ -48,6 +87,15 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
+#active {
+    display: block;
+    color: white;
+    padding: 5px 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #1C1D21;
+}
+
 li a:hover, .dropdown:hover .dropbtn {
     background-color: #1C1D21;
 }
@@ -70,7 +118,7 @@ li.dropdown {
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #31353D}
+.dropdown-content a:hover {background-color: #1C1D21}
 
 .dropdown:hover .dropdown-content {
     display: block;
