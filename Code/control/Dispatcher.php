@@ -20,9 +20,16 @@ class Dispatcher{
 				$action = $_GET["action"];
 			}
 		}
+		if( empty($controller)) {
+			require_once "control/DefaultController.php";
+			$cont = new DefaultControler();
+			$cont->run();		
+		}
+		else{
 		$fullControllerName = ucfirst( $controller ) . "Controller";
 		require_once "control/$fullControllerName.php";
 		$controllerObject = new $fullControllerName();
 		$controllerObject->$action();
+		}
 	}
 }
