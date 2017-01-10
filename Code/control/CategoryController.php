@@ -5,7 +5,9 @@ require_once 'model/CategoryModel.php';
 
 class CategoryController {
 	
-	function readCategories() {
-		return BaseModel::readAll();
+	function show_categories_for_navi() {
+		echo "shit";
 	}
+	
+	
 }
