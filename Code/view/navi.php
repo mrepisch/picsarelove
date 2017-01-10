@@ -10,11 +10,15 @@
 		<li><a href="">Zufälliges Bild</a></li>
 		<li class="dropdown">
 		<a href="#" class="dropbtn">Kategorie</a>
-			<div class="dropdown-content">
-				<a href="index.php?function=kategorisiertAnzeigen">Lustig</a>
-				<a href="index.php?function=kategorisiertAnzeigen">Tiere</a>
-				<a href="index.php?function=kategorisiertAnzeigen">Games</a>
+			<div class="dropdown-content" id="cat_drop" >
+				
+
 			</div>
 		</li>
 	</ul>
 </div>
+<script>
+$.post( "index.php",{"cont":"Category", "action":"show_categories_for_navi"}, function( data ) {
+	  $( "#cat_drop" ).html( data );
+	});
+</script>

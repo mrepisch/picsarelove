@@ -1,7 +1,5 @@
 <?php
-include_once 'control/CategoryController.php';
-$categoryController = new CategoryController();
-$row = $categoryController->readCategories();
+
 ?>
 <div id="content">
 	<form method="post" action="index.php" enctype="multipart/form-data">
@@ -13,7 +11,7 @@ $row = $categoryController->readCategories();
 		<select name=category>
 			<option value="0" selected>Bitte Auswählen</option>
 			<?php foreach ($rows as $row) : ?>
-			<option value="$row[0]" selected>$row[1]</option>
+			<option value="$row->categoryID" selected></option>
 			<?php endforeach; ?>
 		</select><br>
 	   	<input type="submit" value="Hochladen" name="upload">
