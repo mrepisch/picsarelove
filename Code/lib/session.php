@@ -13,7 +13,6 @@ class SessionManager{
 	}
 	
 	function __set($p_key, $p_value) {
-		echo "Test";
 		$_SESSION[$p_key] = $p_value;
 	}
 	
@@ -24,8 +23,7 @@ class SessionManager{
 		return "";
 	}
 	
-	function getIsLogdin()
-	{
+	function getIsLogdin() {
 		if( isset($_SESSION["isLogdin"] ) ) {
 			if( $_SESSION["isLogdin"] == "true") {
 				return true;

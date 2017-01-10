@@ -3,6 +3,8 @@ class View {
 	
 	private $viewFile;
 	
+	private $properties = array();
+	
 	function __construct( $p_viewFile) {
 		$this->viewFile = $p_viewFile;
 	}
@@ -25,7 +27,7 @@ class View {
 		if( !empty($this->properties)) {
 			extract($this->properties);
 		}
-		require_once  'view/login.php';
+		require_once 'view/login.php';
         require_once 'view/navi.php';
         require_once $this->viewFile;
         

@@ -3,8 +3,8 @@
 
 <div id="navigation">
 	<ul>
-
-		<li><a href="index.php?cont=Login&action=register_form">Register</a></li>
+		<?php if( $isLogdin == false) {?>
+		<li><a href="index.php?cont=Login&action=register_form">Register</a></li> <?php }?>
 		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li>
 		<li><a href="index.php?function=show">Alle anzeigen</a></li>
 		<li><a href="">Zufälliges Bild</a></li>

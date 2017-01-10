@@ -3,6 +3,7 @@ require_once 'view/View.php';
 require_once 'lib/Validator.php';
 require_once 'model/UserModel.php';
 require_once 'lib/session.php';
+
 class LoginController{
 	
 	function login(){
@@ -16,8 +17,10 @@ class LoginController{
 				$session = new SessionManager();
 				$session->sessionLoad();
 				$session->userId = $result[0]->userID;
+				$session->username = $result[0]->userName;
 				$session->isLogdin = "true";
 				header("Location:index.php");
+				
 			}
 		}
 		
@@ -57,8 +60,10 @@ class LoginController{
 	}
 	
 	function logout(){
-		
-		
+		$session = new SessionManager();
+		$session->sessionLoad();
+		$session->killSession();
+		header("Location:index.php");
 	}
 	
 	function register_form()
