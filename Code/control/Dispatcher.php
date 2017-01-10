@@ -30,7 +30,7 @@ class Dispatcher{
 			$this->loadDefault();
 		}
 		else{
-			$fullControllerName = ucfirst( $controller ) . "Controller";
+		$fullControllerName = ucfirst( $controller ) . "Controller";
 
 				require_once "control/$fullControllerName.php";
 
