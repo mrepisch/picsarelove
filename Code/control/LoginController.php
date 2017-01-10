@@ -2,6 +2,7 @@
 require_once 'view/View.php';
 require_once 'lib/Validator.php';
 require_once 'model/UserModel.php';
+require_once 'lib/session.php';
 class LoginController{
 	
 	function login(){
@@ -12,9 +13,14 @@ class LoginController{
 		$result = $userModel->getByWhere("username", $email);
 		if( $result[0]->userName == $email ) {
 			if( password_verify($passwd, $result[0]->password) ) {
+				$session = new SessionManager();
+				$session->sessionLoad();
+				$session->userId = $result[0]->userID;
 				header("Location:index.php");
 			}
 		}
+		
+		
 		
 	}
 	

@@ -1,5 +1,5 @@
 <?php
-class SessionHandler{
+class SessionManager{
 	
 	function sessionLoad() {
 		if( session_status() == PHP_SESSION_NONE ) {
@@ -13,6 +13,7 @@ class SessionHandler{
 	}
 	
 	function __set($p_key, $p_value) {
+		echo "Test";
 		$_SESSION[$p_key] = $p_value;
 	}
 	

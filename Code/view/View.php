@@ -25,9 +25,9 @@ class View {
 		if( !empty($this->properties)) {
 			extract($this->properties);
 		}
-		require 'view/login.php';
-        require 'view/navi.php';
-        require $this->viewFile;
+		require_once  'view/login.php';
+        require_once 'view/navi.php';
+        require_once $this->viewFile;
         
 		
 	}
