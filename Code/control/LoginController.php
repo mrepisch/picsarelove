@@ -15,4 +15,9 @@ class LoginController{
 		
 		
 	}
+	
+	function register_form()
+	{
+		echo "test";
+	}
 }

@@ -1,5 +1,10 @@
 <?php
 class Dispatcher{
+	function loadDefault() {
+		require_once "control/DefaultController.php";
+		$cont = new DefaultControler();
+		$cont->run();
+	}
 	
 	function dispatch(){
 		$controller = "";
@@ -21,7 +26,7 @@ class Dispatcher{
 			}
 		}
 		if( empty($controller)) {
-			loadDefault();
+			$this->loadDefault();
 		}
 		else{
 		$fullControllerName = ucfirst( $controller ) . "Controller";
@@ -33,22 +38,18 @@ class Dispatcher{
 						$controllerObject->$action();
 					}
 					else{
-						loadDefault();
+						$this->loadDefault();
 					}
 				}
 				else {
-					loadDefault();
+					$this->loadDefault();
 				}
 			}
 			else {
-				loadDefault();
+				$this->loadDefault();
 			}
 		}
 	}
 	
-	function loadDefault() {
-		require_once "control/DefaultController.php";
-		$cont = new DefaultControler();
-		$cont->run();
-	}
+
 }
