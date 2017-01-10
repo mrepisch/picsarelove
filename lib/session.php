@@ -10,7 +10,6 @@ class SessionHandler{
 	function killSession(){
 		session_unset(); 
 		session_destroy(); 
-	
 	}
 	
 	function __set($p_key, $p_value) {
