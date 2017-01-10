@@ -16,6 +16,7 @@ class LoginController{
 				$session = new SessionManager();
 				$session->sessionLoad();
 				$session->userId = $result[0]->userID;
+				$session->isLogdin = "true";
 				header("Location:index.php");
 			}
 		}

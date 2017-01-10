@@ -23,4 +23,14 @@ class SessionManager{
 		}
 		return "";
 	}
+	
+	function getIsLogdin()
+	{
+		if( isset($_SESSION["isLogdin"] ) ) {
+			if( $_SESSION["isLogdin"] == "true") {
+				return true;
+			}
+		}
+		return false;
+	}
 }
