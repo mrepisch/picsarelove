@@ -1,5 +1,5 @@
 <?php
-
+require_once 'view/View.php';;
 
 class LoginController{
 	
@@ -18,6 +18,7 @@ class LoginController{
 	
 	function register_form()
 	{
-		echo "test";
+		$view = new View("view/register.php");
+		$view->display();
 	}
 }

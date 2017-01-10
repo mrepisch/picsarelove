@@ -18,37 +18,35 @@ class Dispatcher{
 			}
 		}
 		else if( $_SERVER['REQUEST_METHOD'] === "GET"){
+
 			if( isset($_GET["cont"])) {
+							echo"TEST3";
 				$controller = $_GET["cont"];
 			}
 			if( isset($_GET["action"] ) ) {
+							echo"TEST4";
 				$action = $_GET["action"];
 			}
 		}
 		if( empty($controller)) {
+			echo"TEST1";
 			$this->loadDefault();
 		}
 		else{
 		$fullControllerName = ucfirst( $controller ) . "Controller";
-			if( file_exists($fullControllerName ) ){
+
 				require_once "control/$fullControllerName.php";
-				if( class_exists($fullControllerName)) {
+
+
 					$controllerObject = new $fullControllerName();
-					if( function_exists($action)) {
+
+
 						$controllerObject->$action();
 					}
-					else{
-						$this->loadDefault();
-					}
-				}
-				else {
-					$this->loadDefault();
-				}
-			}
-			else {
-				$this->loadDefault();
-			}
-		}
+
+
+			
+		
 	}
 	
 
