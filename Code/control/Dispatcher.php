@@ -21,15 +21,34 @@ class Dispatcher{
 			}
 		}
 		if( empty($controller)) {
-			require_once "control/DefaultController.php";
-			$cont = new DefaultControler();
-			$cont->run();		
+			loadDefault();
 		}
 		else{
 		$fullControllerName = ucfirst( $controller ) . "Controller";
-		require_once "control/$fullControllerName.php";
-		$controllerObject = new $fullControllerName();
-		$controllerObject->$action();
+			if( file_exists($fullControllerName ) ){
+				require_once "control/$fullControllerName.php";
+				if( class_exists($fullControllerName)) {
+					$controllerObject = new $fullControllerName();
+					if( function_exists($action)) {
+						$controllerObject->$action();
+					}
+					else{
+						loadDefault();
+					}
+				}
+				else {
+					loadDefault();
+				}
+			}
+			else {
+				loadDefault();
+			}
 		}
+	}
+	
+	function loadDefault() {
+		require_once "control/DefaultController.php";
+		$cont = new DefaultControler();
+		$cont->run();
 	}
 }
