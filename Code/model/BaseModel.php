@@ -39,18 +39,15 @@ class BaseModel {
 		}
 		$result = $statement->get_result();
 		$row = $result->fetch_object();
-		        $conn->close(); 
+		$conn->close(); 
 		return $row;
 	}
 	
 	function getByWhere($p_whereAttribute, $p_whereValue){
-		$query = "SELECT * FROM $this->tableName WHERE username=?;";
-		echo $query;
+		$query = "SELECT * FROM $this->tableName WHERE $p_whereAttribute=?;";
 		$conn = $this->connectToDb();
 	 	$statement = $conn->prepare($query); 
 		$statement->bind_param('s',$p_whereValue);
-		
-
 		if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
@@ -59,7 +56,7 @@ class BaseModel {
 		while( $row = $result->fetch_object()) {
 			$rows[] = $row;
 		}
-		        $conn->close();
+		$conn->close();
 		return $rows;
 	}
 	
@@ -75,7 +72,7 @@ class BaseModel {
 		while( $row = $result->fetch_object()) {
 			$rows[] = $row;
 		}
-		        $conn->close();
+		$conn->close();
 		return $rows;
 	}
 	
@@ -86,7 +83,7 @@ class BaseModel {
 			if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
-		        $conn->close();
+		$conn->close();
 	}
 	
 	

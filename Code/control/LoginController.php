@@ -8,8 +8,13 @@ class LoginController{
 		$email = $_POST["email"];
 		$passwd = $_POST["passwd"];
 		$userModel = new UserModel();
-		$userModel->getByWhere("email", $email) ;
-		
+		$userModel->getByWhere("username", $email);
+		$result = $userModel->getByWhere("username", $email);
+		if( $result[0]->userName == $email ) {
+			if( password_verify($passwd, $result[0]->password) ) {
+				header("Location:index.php");
+			}
+		}
 		
 	}
 	
@@ -18,18 +23,29 @@ class LoginController{
 		$passwd1 = $_POST["passwd"];
 		$passwd2 = $_POST["passwdrep"];
 		$validator = new Validator();
-		if( Validator::isEmail($email ) == false ) {
-			// TODO:ERROR HANDLING
+		$userModel = new UserModel();
+		$counter = 0;
+		$result = $userModel->getByWhere("username", $email);
+		foreach( $result as $row) {
+			$counter ++;
 		}
-		else if( Validator::validatePassword($passwd1, $passwd2) == false ) {
-			//TODO: ERROR HANDLING
+		if( $counter == 0)
+		{
+			if( Validator::isEmail($email ) == false ) {
+				// TODO:ERROR HANDLING
+			}
+			else if( Validator::validatePassword($passwd1, $passwd2) == false ) {
+				//TODO: ERROR HANDLING
+			}
+			else {
+
+				$userModel->registerNewUser($email, $passwd1);
+				header("Location:index.php");
+			}
 		}
 		else {
-			$userModel = new UserModel();
-			$userModel->registerNewUser($email, $passwd1);
-			header("Location:index.php");
+			echo "benutzer existiert schon";
 		}
-		
 		
 	}
 	
