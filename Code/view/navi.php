@@ -5,7 +5,7 @@
 	<ul>
 
 		<li><a href="index.php?cont=Login&action=register_form">Register</a></li>
-		<li><a href="index.php?function=bildHochladen">Bild hochladen</a></li>
+		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li>
 		<li><a href="index.php?function=show">Alle anzeigen</a></li>
 		<li><a href="">Zufälliges Bild</a></li>
 		<li class="dropdown">
