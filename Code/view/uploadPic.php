@@ -1,4 +1,8 @@
-
+<?php
+include_once 'control/CategoryController.php';
+$categoryController = new CategoryController();
+$row = $categoryController->readCategories();
+?>
 <div id="content">
 	<form method="post" action="index.php" enctype="multipart/form-data">
 		<input type="hidden" name="cont" value="Picture"></input>
@@ -8,8 +12,9 @@
 		<label for="category">Kategorie: </label>
 		<select name=category>
 			<option value="0" selected>Bitte Auswählen</option>
-			<option value="1" selected>Lustig</option>
-			<option value="2" selected>Cool</option>
+			<?php foreach ($rows as $row) : ?>
+			<option value="$row[0]" selected>$row[1]</option>
+			<?php endforeach; ?>
 		</select><br>
 	   	<input type="submit" value="Hochladen" name="upload">
 	</form>
