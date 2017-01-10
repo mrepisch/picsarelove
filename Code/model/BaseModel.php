@@ -43,7 +43,7 @@ class BaseModel {
 		return $row;
 	}
 	
-	function getByWhere($p_whereAttribute, $p_whereValue){
+	public function getByWhere($p_whereAttribute, $p_whereValue){
 		$query = "SELECT * FROM $this->tableName WHERE $p_whereAttribute=?;";
 		$conn = $this->connectToDb();
 	 	$statement = $conn->prepare($query); 
@@ -60,8 +60,8 @@ class BaseModel {
 		return $rows;
 	}
 	
-	protected function readAll( $p_limit = 100) {
-		$query = "SELECT * FROM $this->tableName LIMIT = $p_limit";
+	public function readAll( $p_limit = 100, $p_offset = 0) {
+		$query = "SELECT * FROM $this->tableName LIMIT $p_offset, $p_limit";
 		$conn = $this->connectToDb();
 		$statement = $conn->prepare($query);
 		if( !$statement->execute()) {

@@ -68,7 +68,11 @@ class LoginController{
 	
 	function register_form()
 	{
+		$session = new SessionManager();
+		$session->sessionLoad();
 		$view = new View("view/register.php");
+		$view->isLogdin = $session->getIsLogdin();
+		$view->userName = $session->username;
 		$view->display();
 	}
 }

@@ -16,4 +16,6 @@ class DefaultControler{
 		$view->display();
 
 	}
+	
+
 }
