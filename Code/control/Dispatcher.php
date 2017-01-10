@@ -20,16 +20,13 @@ class Dispatcher{
 		else if( $_SERVER['REQUEST_METHOD'] === "GET"){
 
 			if( isset($_GET["cont"])) {
-							echo"TEST3";
 				$controller = $_GET["cont"];
 			}
 			if( isset($_GET["action"] ) ) {
-							echo"TEST4";
 				$action = $_GET["action"];
 			}
 		}
 		if( empty($controller)) {
-			echo"TEST1";
 			$this->loadDefault();
 		}
 		else{

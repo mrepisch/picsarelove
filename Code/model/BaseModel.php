@@ -17,12 +17,12 @@ class BaseModel {
 		$this->primarayKey = $p_primaryKey;		
 	}
 	
-	static function connectToDb() {
+ function connectToDb() {
 		$host		= "localhost";
 	 	$username 	= "admin";
 	 	$password	= "cpp4ever";
 	 	$dbName		= "picsarelove";
-		$conn = new mysqli(host, username, password, dbName);
+		$conn = new mysqli($host, $username, $password, $dbName);
 		if( $conn->connect_error ) {
 			die("Connection failed: " . $conn->connect_error);
 		}
@@ -31,19 +31,26 @@ class BaseModel {
 	
 	protected  function getByPrimaryKey( $p_pk, $p_attributes ) {
 		$query = "SELECT $p_attributes FROM $this->tableName WHERE $this->primarayKey = ?;";
-		$statement = BaseModel::connectToDb()->prepare($query);
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
 		$statement->bindParam('i',$p_pk);
 		if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
 		$result = $statement->get_result();
-		$row = $result->fetch_object(); 
+		$row = $result->fetch_object();
+		        $conn->close(); 
 		return $row;
 	}
 	
-	protected function readAll( $p_limit = 100) {
-		$query = "SELECT * FROM $this->tableName LIMIT = $p_limit";
-		$statement = BaseModel::connectToDb()->prepare($query);
+	function getByWhere($p_whereAttribute, $p_whereValue){
+		$query = "SELECT * FROM $this->tableName WHERE username=?;";
+		echo $query;
+		$conn = $this->connectToDb();
+	 	$statement = $conn->prepare($query); 
+		$statement->bind_param('s',$p_whereValue);
+		
+
 		if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
@@ -52,6 +59,23 @@ class BaseModel {
 		while( $row = $result->fetch_object()) {
 			$rows[] = $row;
 		}
+		        $conn->close();
+		return $rows;
+	}
+	
+	protected function readAll( $p_limit = 100) {
+		$query = "SELECT * FROM $this->tableName LIMIT = $p_limit";
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
+		if( !$statement->execute()) {
+			throw new Exception($statement->error);
+		}
+		$result = $statement->get_result();
+		$rows = array();
+		while( $row = $result->fetch_object()) {
+			$rows[] = $row;
+		}
+		        $conn->close();
 		return $rows;
 	}
 	
@@ -62,6 +86,7 @@ class BaseModel {
 			if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
+		        $conn->close();
 	}
 	
 	
