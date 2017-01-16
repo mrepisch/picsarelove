@@ -16,8 +16,10 @@ class PictureModel extends BaseModel {
 		
 		if (!$statement->execute()) {
 			throw new Exception($statement->error);
+			return false;
 		}
 		$conn->close();
+		return true;
 	}
 	
 	
