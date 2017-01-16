@@ -71,6 +71,7 @@ class PictureController {
 			
 			$row = $row[$randomInt];
 			$picID = $row->picID;
+			
 		}
 		
 		
