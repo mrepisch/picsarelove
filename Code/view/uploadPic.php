@@ -11,9 +11,14 @@
 		<select name=category>
 			<option value="0" selected>Bitte Auswählen</option>
 			<?php foreach ($rows as $row) : ?>
-			<option value="$row->categoryID" selected></option>
+			<option value="$row->categoryID">$row->categoryName</option>
 			<?php endforeach; ?>
 		</select><br>
 	   	<input type="submit" value="Hochladen" name="upload">
 	</form>
 </div>
+<script>
+$.post( "index.php",{"cont":"Category", "action":"show_categories"}, function( data ) {
+	  $( "#cat_drop" ).html( data );
+	});
+</script>

@@ -1,4 +1,6 @@
 <?php 
-	foreach ()
+	foreach ($rows as $row) {
+		
+	}
 ?>
-<a href="index.php?function=kategorisiertAnzeigen">Lustig</a>
+<a href="">Lustig</a>
