@@ -52,9 +52,23 @@ class PictureModel extends BaseModel {
 		}
 		return $row;
 	}
-
-	function showRandom() {
+	
+	function getByCategory($p_categoryID){
+		$query = "SELECT * FROM $this->tableName WHERE f_categoryID = ?;";
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
+		$statement->bind_param("i", $p_categoryID);
+		if (!$statement->execute()) {
+			throw new Exception($statement->error);
+		}
+		$result = $statement->get_result();
+		$rows = array();
+		while( $row = $result->fetch_object()) {
+			$rows[] = $row;
+		}
+		return $rows;
 		
 	}
+
 	
 }

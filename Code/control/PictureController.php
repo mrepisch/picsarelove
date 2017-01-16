@@ -55,7 +55,7 @@ class PictureController {
 		}
 		
 		$pictureModel = new PictureModel();
-		if( $picID == 1) {
+		if( $picID == 1 && $category == -1 ) {
 			$row = $pictureModel->readAll(1);
 			if( !empty($row)){
 				$row = $row[0];
@@ -73,22 +73,71 @@ class PictureController {
 			$picID = $row->picID;
 
 		}
-		
-		
-		$nextPic = $pictureModel->getNextPicture( $picID );
-		$lastPic = $pictureModel->getLastPicture( $picID );
-		
-		$contentView = new View("view/main_content.php");
-		$this->setSessionVarsToView($contentView);
-		$contentView->data = $row;
-		$contentView->last = $lastPic;
-		$contentView->next = $nextPic;
-		if( !empty($row)){
-			$contentView->display();
+		if( $category == -1){
+			$nextPic = $pictureModel->getNextPicture( $picID );
+			$lastPic = $pictureModel->getLastPicture( $picID );
+			
+			$contentView = new View("view/main_content.php");
+			$this->setSessionVarsToView($contentView);
+			$contentView->data = $row;
+			$contentView->categoryID = $category;
+			$contentView->last = $lastPic;
+			$contentView->next = $nextPic;
+			if( !empty($row)){
+				$contentView->display();
+			}
+			else{
+				$contentView->display(true,false);
+			}
 		}
-		else{
-			$contentView->display(true,false);
+		else {
+			$index = 0;
+			$counter = 0;
+			$rows = $pictureModel->getByCategory($category);
+			$contentView = new View("view/main_content.php");
+			$this->setSessionVarsToView($contentView);
+			if( !empty($rows)){
+				
+
+				$contentView->categoryID = $category;
+				echo $picID. " PICTUREID";
+				if( $picID == 1){
+					//echo"SHIT";
+					$contentView->data = $rows[0];
+				}
+				else {
+
+					foreach( $rows as $row){
+						if( $row->picID == $picID ){
+							$contentView->data = $row;
+							$index = $counter;
+						}
+						$counter ++;
+					}
+				}
+
+				$rowCount = count($rows);
+				echo $rowCount;
+				if( $index == 0){
+					$contentView->last = $rows[$rowCount - 1];
+				}
+				else{
+					$contentView->last = $rows[$index - 1];
+				}
+				if( $index >= $rowCount - 1){
+					$contentView->next = $rows[0];
+				}
+				else{
+					$contentView->next = $rows[$index + 1];	
+				}
+				$contentView->categoryID = $category;	
+				$contentView->display();
+			}
+			else {
+				$contentView->display(true,false);
+			}
 		}
+		
 	}
 	
 	

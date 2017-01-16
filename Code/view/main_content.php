@@ -3,8 +3,8 @@
 	?>
 	<div id="post">
 			<div id="arrow_left">
-			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?>?cat=<?php echo $data->f_categoryID?> "><img src="pictures/arrow_left.png" /></a>
-			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?>?cat=<?php echo $data->f_categoryID?>  "><img src="pictures/arrow_right.png" /></a>
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?>&category=<?php echo $categoryID?> "><img src="pictures/arrow_left.png" /></a>
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?>&category=<?php echo $categoryID?>  "><img src="pictures/arrow_right.png" /></a>
 		</div>
 		<h3><?php echo $data->title ?></h3>
 		<img src="<?php echo $data->imagePath ?>"></img><br>
