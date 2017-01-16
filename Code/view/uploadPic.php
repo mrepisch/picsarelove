@@ -9,16 +9,16 @@
 		<label for="picture">Bild hochladen: </label> <input type="file" name="picture" /><br>
 		<label for="category">Kategorie: </label>
 		<select name=category>
-			<option value="0" selected>Bitte Ausw‰hlen</option>
+			<option value="0" selected>Bitte Ausw√§hlen</option>
 			<?php foreach ($rows as $row) : ?>
-			<option value="$row->categoryID">$row->categoryName</option>
+			<option value="<?php echo $row->categoryID?>"> <?php echo $row->categoryName?></option>
 			<?php endforeach; ?>
 		</select><br>
 	   	<input type="submit" value="Hochladen" name="upload">
 	</form>
 </div>
 <script>
-$.post( "index.php",{"cont":"Category", "action":"show_categories"}, function( data ) {
+$.post( "index.php",{"cont":"Category", "action":"show_all"}, function( data ) {
 	  $( "#cat_drop" ).html( data );
 	});
 </script>

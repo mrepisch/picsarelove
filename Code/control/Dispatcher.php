@@ -31,13 +31,8 @@ class Dispatcher{
 		}
 		else{
 			$fullControllerName = ucfirst( $controller ) . "Controller";
-
 				require_once "control/$fullControllerName.php";
-
-
 					$controllerObject = new $fullControllerName();
-
-
 						$controllerObject->$action();
 					}
 

@@ -2,9 +2,14 @@
 <?php
 	?>
 	<div id="post">
-		<h3><?php echo $data->title?></h3>
+			<div id="arrow_left">
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?> "><img src="pictures/arrow_left.png" /></a>
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?> "><img src="pictures/arrow_right.png" /></a>
+		</div>
+		<h3><?php echo $data->title ?></h3>
 		<img src="<?php echo $data->imagePath ?>"></img><br>
 		<h4>Kommentare (*Nummer*)</h4><br>
+
 		<div id="comments">
 			<div id="comment_content">
 			
@@ -22,7 +27,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	$.post( "index.php",{"cont":"Comment", "action":"show_for_data" , "dataID":"<?php echo $data->dataID ?>"}, function( data ) {
+	var dataID = <?php echo $data->picID ?>;
+	$.post( "index.php",{"cont":"Comment", "action":"show_for_pic" , "picID":dataID}, function( data ) {
 		  $( "#comment_content" ).html( data );
 		});
 	</script>

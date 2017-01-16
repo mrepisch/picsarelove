@@ -3,6 +3,7 @@
 require_once 'view/View.php';
 require_once 'model/PictureModel.php';
 require_once 'lib/session.php';
+require_once 'model/CategoryModel.php';
 class PictureController {
 	
 	private function setSessionVarsToView($view) {
@@ -34,7 +35,10 @@ class PictureController {
 	function displayForm() {
 		$session = new SessionManager();
 		$session->sessionLoad();
+		$categorys = new CategoryModel();
+		$rows = $categorys->readAll();
 		$view = new View("view/uploadPic.php");
+		$view->rows = $rows;
 		$view->isLogdin = $session->getIsLogdin();
 		$view->userName = $session->username;
 		$view->display();
@@ -49,14 +53,30 @@ class PictureController {
 		if( isset($_GET["picID"])) {
 			$picID = $_GET["picID"];
 		}
+		$category = -1;
+		if( isset( $_GET["category"] ) ) {
+			$category = $_GET["category"];
+		}
 		
 		$pictureModel = new PictureModel();
-		$row = $pictureModel->getByPrimaryKey($picID, "*");
+		if( $picID == 1) {
+			$row = $pictureModel->readAll(1);
+			$row = $row[0];
+			$picID = $row->picID;
+		}
+		else {
+			$row = $pictureModel->getByPrimaryKey($picID, "*");
+		}
+		
+		$nextPic = $pictureModel->getNextPicture( $picID );
+		$lastPic = $pictureModel->getLastPicture( $picID );
+		
 		$contentView = new View("view/main_content.php");
 		$this->setSessionVarsToView($contentView);
 		$contentView->data = $row;
+		$contentView->last = $lastPic;
+		$contentView->next = $nextPic;
 		$contentView->display();
-		
 	}
 	
 	
