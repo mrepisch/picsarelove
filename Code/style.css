@@ -41,6 +41,11 @@ body {
 	margin-top:20px;
 	padding: 8px 16px;
 
+
+}
+
+.first_navi{
+	border-top:solid 1px black;	
 }
 
 .last_navi{
@@ -59,3 +64,27 @@ body {
 	width:200px;
 	display:inline;	
 }
+
+
+#content{
+	background-color:#eeeff7;	
+}
+
+#arrows img{
+	width:100px;
+	height:100px;
+}
+#post img{
+	width:80%;
+	border:20px solid #1c1d21;
+	margin-left:50px;
+	border-radius:20px;
+	-webkit-box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
+-moz-box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
+box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
+
+}
+#comment_content{
+	
+}
+

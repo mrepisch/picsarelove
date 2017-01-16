@@ -2,29 +2,30 @@
 <div id="content">
 <?php
 	?>
-	<div id="post">
-			<div id="arrow_left">
+
+		<div id="arrows">
 			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?>&category=<?php echo $categoryID?> "><img src="pictures/arrow_left.png" /></a>
 			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?>&category=<?php echo $categoryID?>  "><img src="pictures/arrow_right.png" /></a>
 		</div>
-		<h3><?php echo $data->title ?></h3>
-		<img src="<?php echo $data->imagePath ?>"></img><br>
-		<div id="comments">
-			<div id="comment_content">
+		<div id="post">
+			<h3><?php echo $data->title ?></h3>
+			<img src="<?php echo $data->imagePath ?>"></img><br>
+			<div id="comments">
+				<div id="comment_content">
 			
-			</div>
+				</div>
 		
 			<?php if($isLogdin == true ) {?>
 			<form action="index.php" method="post">
-				<input type="hidden" name="cont" value="Comment"></input>
-				<input type="hidden" name="action" value="createNew"></input>
-				<input type="hidden" name="picID" value="<?php echo $data->picID ?>" ></input>
-				<textarea rows="5" cols="30" placeholder="Hier dein Kommentar" name="text"></textarea>
-				<input type="submit" value="senden">
-			</form>
-			<?php }?>
+					<input type="hidden" name="cont" value="Comment"></input>
+					<input type="hidden" name="action" value="createNew"></input>
+					<input type="hidden" name="picID" value="<?php echo $data->picID ?>" ></input>
+					<textarea rows="5" cols="30" placeholder="Hier dein Kommentar" name="text"></textarea>
+					<input type="submit" value="senden">
+				</form>
+				<?php }?>
+			</div>
 		</div>
-	</div>
 	<script type="text/javascript">
 	var dataID = <?php echo $data->picID ?>;
 	$.post( "index.php",{"cont":"Comment", "action":"show_for_pic" , "picID":dataID}, function( data ) {

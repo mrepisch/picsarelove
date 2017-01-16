@@ -154,7 +154,6 @@ class PictureController {
 				}
 				// Hole nächstes und vorhergehendes Bild
 				$rowCount = count($rows);
-				echo $rowCount;
 				if( $index == 0){
 					$contentView->last = $rows[$rowCount - 1];
 				}
