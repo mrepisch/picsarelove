@@ -14,7 +14,13 @@ class CommentController{
 	}
 	
 	function show_for_pic ()
-	{
-		echo $_POST["picID"];
+	{		
+		$commentModel = new CommentModel();
+		$session->sessionLoad();
+		$row = $commentModel->getByWhere("f_picID", $_POST["picID"]);
+		$commentView = new View("view/comments.php");
+		$commentView->data = $row;
+		$commentView->display(false);
+		
 	}
 }
