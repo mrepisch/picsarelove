@@ -66,7 +66,11 @@ class PictureController {
 			$row = $pictureModel->getByPrimaryKey($picID, "*");
 		}
 		if( $picID == "random" ){
-			//PETAR DO YOUR RANDOM SHIT HERE
+			$row = $pictureModel->readAll();
+			$randomInt = rand(0, count($row) - 1);
+			
+			$row = $row[$randomInt];
+			$picID = $row->picID;
 		}
 		
 		
