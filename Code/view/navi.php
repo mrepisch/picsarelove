@@ -8,7 +8,7 @@
 		
 		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li><?php }?>
 		<li><a href="index.php?cont=Picture&action=show_all&page=1">Alle anzeigen</a></li>
-		<li><a href="">Zuf‰lliges Bild</a></li>
+		<li><a href="">Zuf√§lliges Bild</a></li>
 		<li class="dropdown">
 		<a href="#" class="dropbtn">Kategorie</a>
 			<div class="dropdown-content" id="cat_drop" >

@@ -55,6 +55,7 @@ class PictureController {
 		$contentView = new View("view/main_content.php");
 		$this->setSessionVarsToView($contentView);
 		$contentView->data = $row;
+		$pictureModel->showRandom();
 		$contentView->display();
 		
 	}
