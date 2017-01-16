@@ -4,6 +4,7 @@ require_once 'model/PictureModel.php';
 require_once 'lib/session.php';
 require_once 'lib/Validator.php';
 require_once 'model/CategoryModel.php';
+require_once 'model/CommentModel.php';
 
 /**
  * Diese Klasse stellt den Controller für die Bilder dar.
@@ -181,19 +182,21 @@ class PictureController {
 		if( isset($_GET["picID"])) {
 			$picID = $_GET["picID"];
 		}
-		
 		$session = new SessionManager();
 		$session->sessionLoad();
-		$userID = $session->userId;
-		
+		$sessionUserID = $session->userId;
 		$pictureModel = new PictureModel();
-		$row = $pictureModel->getByWhere('picID', $picID);
-		if ($row->userID == $userID) {
-			//$pictureModel->
+		$row = $pictureModel->getByPrimaryKey($picID, "*");
+		$userID = $row->f_userID;
+		
+		if ($userID == $sessionUserID) {
+			$commentModel = new CommentModel();
+			$commentModel->deleteForPic($picID);
+			
+			$pictureModel->deleteEntry($picID);
+			header("Location:index.php?cont=User&action=showOptions");
 		}
 	}
-	
-	
 
 }
   
