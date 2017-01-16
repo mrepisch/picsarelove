@@ -13,7 +13,6 @@
 		<a href="#" class="dropbtn">Kategorie</a>
 			<div class="dropdown-content" id="cat_drop" >
 				
-
 			</div>
 		</li>
 	</ul>
