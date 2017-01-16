@@ -47,7 +47,7 @@ class PictureController {
 		$categoryID = $_POST["category"];
 		$userID = $session->userId;
 		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
-		if(Validator::validateCategory($categoryID)) {
+		if(Validator::isFieldZero($categoryID)) {
 			$pictureModel = new PictureModel();
 			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
 			header("Location:index.php?cont=Picture&action=show");
