@@ -1,1 +1,4 @@
 *.jpg
+.settings
+.buildpath
+.project
