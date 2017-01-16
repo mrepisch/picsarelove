@@ -14,6 +14,9 @@
 			<option value="<?php echo $row->categoryID?>"> <?php echo $row->categoryName?></option>
 			<?php endforeach; ?>
 		</select><br>
+		<?php if(isset($_GET["noCat"])) : ?>
+			<h4>Bitte geben sie eine Kategorie ein</h4><br>
+		<?php endif; ?>
 	   	<input type="submit" value="Hochladen" name="upload">
 	</form>
 </div>

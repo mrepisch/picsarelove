@@ -3,6 +3,7 @@
 require_once 'view/View.php';
 require_once 'model/PictureModel.php';
 require_once 'lib/session.php';
+require_once 'lib/Validator.php';
 require_once 'model/CategoryModel.php';
 class PictureController {
 	
@@ -27,9 +28,14 @@ class PictureController {
 		$categoryID = $_POST["category"];
 		$userID = $session->userId;
 		
-		$pictureModel = new PictureModel();
-		$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
-		header("Location:index.php?page=1");
+		if(Validator::validateCategory($categoryID)) {
+			$pictureModel = new PictureModel();
+			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
+			header("Location:index.php?cont=Picture&action=show");
+		} else {
+			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+		}
+
 	}
 	
 	function displayForm() {
