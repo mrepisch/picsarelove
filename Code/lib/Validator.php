@@ -25,4 +25,12 @@ class Validator {
 		}
 		return true;
 	}
+	
+	static function validateCategory($p_categoryID) {
+		if($p_categoryID != 0){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
