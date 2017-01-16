@@ -9,6 +9,7 @@
 		</div>
 		<div id="post">
 			<h3><?php echo $data->title ?></h3>
+			
 			<img src="<?php echo $data->imagePath ?>"></img><br>
 			<div id="comments">
 				<div id="comment_content">

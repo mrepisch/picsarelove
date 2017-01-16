@@ -6,7 +6,7 @@
 body {
 	background-color: #445878;
 	font-family: "Arial", sans-serif;
-	color:eeeff7;
+	color:#eeeff7;
 }
 
 
@@ -75,16 +75,30 @@ body {
 	height:100px;
 }
 #post img{
-	width:80%;
-	border:20px solid #1c1d21;
-	margin-left:50px;
-	border-radius:20px;
-	-webkit-box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
--moz-box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
-box-shadow: 18px 25px 68px 15px rgba(0,0,0,0.52);
+	width:50%!important;
+	padding-left:30%;
+
+	
+}
+
+#post{
+	background-color:#1c1d21;
+	margin-left:15%;
 
 }
+
+#comments{
+	margin-left:30%;
+	background-color:#1c1d21;
+}
+
 #comment_content{
-	
+	background-color:#31353d;
+	width:71%;
+	text-align: center;
+}
+
+.single_comment{
+	border: solid 1px #1c1d21;
 }
 
