@@ -67,6 +67,10 @@ class PictureController {
 		else {
 			$row = $pictureModel->getByPrimaryKey($picID, "*");
 		}
+		if( $picID == "random" ){
+			//PETAR DO YOUR RANDOM SHIT HERE
+		}
+		
 		
 		$nextPic = $pictureModel->getNextPicture( $picID );
 		$lastPic = $pictureModel->getLastPicture( $picID );

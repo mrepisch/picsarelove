@@ -40,7 +40,6 @@ class PictureModel extends BaseModel {
 		$row = $this->getByPrimaryKey($p_picture + 1,"*");
 		if(empty($row ) ){
 			$query = "SELECT * FROM $this->tableName WHERE 1;";
-			echo $query;
 			$conn = $this->connectToDb();
 			$statement = $conn->prepare($query);
 			if (!$statement->execute()) {
