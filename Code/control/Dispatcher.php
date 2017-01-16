@@ -3,7 +3,7 @@ class Dispatcher{
 	function loadDefault() {
 		require_once "control/PictureController.php";
 		$cont = new PictureController();
-		$cont->show_all();
+		$cont->show();
 	}
 	
 	function dispatch(){

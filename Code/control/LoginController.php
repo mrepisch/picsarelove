@@ -11,7 +11,6 @@ class LoginController{
 		$passwd = $_POST["passwd"];
 		$email = htmlspecialchars($email);
 		$userModel = new UserModel();
-		$userModel->getByWhere("username", $email);
 		$result = $userModel->getByWhere("username", $email);
 		if( $result[0]->userName == $email ) {
 			if( password_verify($passwd, $result[0]->password) ) {

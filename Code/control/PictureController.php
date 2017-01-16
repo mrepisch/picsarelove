@@ -40,19 +40,21 @@ class PictureController {
 		$view->display();
 	}
 	
-	function show_all() {
+	function show() {
 		$page = 1;
 		if( isset( $_GET["page"])) {
 			$page = $_GET["page"];
 		}
+		$picID = 1;
+		if( isset($_GET["picID"])) {
+			$picID = $_GET["picID"];
+		}
 		
-		$view = new View("view/main_content.php");
 		$pictureModel = new PictureModel();
-		$rows = $pictureModel->readAll(20,( intval($page) - 1 ) * 20);
-		
+		$row = $pictureModel->getByPrimaryKey($picID, "*");
 		$contentView = new View("view/main_content.php");
 		$this->setSessionVarsToView($contentView);
-		$contentView->data = $rows;
+		$contentView->data = $row;
 		$contentView->display();
 		
 	}

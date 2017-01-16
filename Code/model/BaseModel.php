@@ -29,11 +29,11 @@ class BaseModel {
 		return $conn;
 	}
 	
-	protected  function getByPrimaryKey( $p_pk, $p_attributes ) {
+	public  function getByPrimaryKey( $p_pk, $p_attributes ) {
 		$query = "SELECT $p_attributes FROM $this->tableName WHERE $this->primarayKey = ?;";
 		$conn = $this->connectToDb();
 		$statement = $conn->prepare($query);
-		$statement->bindParam('i',$p_pk);
+		$statement->bind_param('s',$p_pk);
 		if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
