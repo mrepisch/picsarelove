@@ -19,7 +19,7 @@
 	</ul>
 </div>
 <script>
-$.post( "index.php",{"cont":"Category", "action":"show_categories"}, function( data ) {
+$.post( "index.php",{"cont":"Category", "action":"show_all"}, function( data ) {
 	  $( "#cat_drop" ).html( data );
 	});
 </script>

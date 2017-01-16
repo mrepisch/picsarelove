@@ -7,9 +7,5 @@ class CategoryModel extends BaseModel {
 		BaseModel::__construct("categories","categoryID");
 	}
 	
-	function showCategories() {
-		$baseModel = new BaseModel();
-		return $baseModel->readAll();
-	}
 
 }

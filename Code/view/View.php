@@ -23,12 +23,14 @@ class View {
         }
     }
 	
-	function display() {
+	function display($p_showAll = true) {
 		if( !empty($this->properties)) {
 			extract($this->properties);
 		}
-		require_once 'view/login.php';
-        require_once 'view/navi.php';
+		if( $p_showAll ) {
+			require_once 'view/login.php';
+        	require_once 'view/navi.php';
+		}
         require_once $this->viewFile;
         
 		

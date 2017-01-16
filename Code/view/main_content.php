@@ -29,6 +29,5 @@ foreach ($data as $pic){
 	</script>
 	<?php }?>
 
-
 	
 </div>

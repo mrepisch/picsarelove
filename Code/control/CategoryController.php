@@ -5,9 +5,15 @@ require_once 'model/CategoryModel.php';
 
 class CategoryController {
 	
-	function show_categories() {
-		$categoriesModel = new CategoryModel();
-		return $categoriesModel->showCategories();
+	function show_all() {
+		
+		$categoryModel = new CategoryModel();
+		$rows = $categoryModel->readAll();
+	
+		$categoryView = new View("view/categories.php");
+		$categoryView->data = $rows;
+		$categoryView->display(false);
+	
 	}
 	
 }
