@@ -2,13 +2,13 @@
 <?php if($isLogdin == false){ ?>
  <div id="login">
  	<form action="index.php" method="post">
-	<input type="hidden" name="cont" value="Login"></input>
+	<input type="hidden" name="cont" value="Login">
 	<input type="hidden" name="action" value="login">
 	
-	<label for="email">Email</label>
-	<input type="email" name="email"></input>
-	<label for="passwd">Passwort</label>
-	<input type="password" name="passwd"></input>
+	<label for="emaillog">Email</label>
+	<input type="email" name="email" id="emaillog">
+	<label for="passwdlog">Passwort</label>
+	<input type="password" name="passwd" id="passwdlog">
 	<input type="submit" value="Login" />  
 	</form>
 </div>
