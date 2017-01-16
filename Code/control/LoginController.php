@@ -9,6 +9,7 @@ class LoginController{
 	function login(){
 		$email = $_POST["email"];
 		$passwd = $_POST["passwd"];
+		$email = htmlspecialchars($email);
 		$userModel = new UserModel();
 		$userModel->getByWhere("username", $email);
 		$result = $userModel->getByWhere("username", $email);

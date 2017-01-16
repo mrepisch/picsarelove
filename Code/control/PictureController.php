@@ -14,8 +14,6 @@ class PictureController {
 	
 	function upload() {
 		$targetdir = 'pictures/';
-
-		
 		$newFileName = $targetdir . uniqid() .".". pathinfo($_FILES['picture']['name'],PATHINFO_EXTENSION);
 		$targetfile = $_FILES['picture']['name'] = $newFileName;
 		echo $newFileName;
@@ -52,7 +50,6 @@ class PictureController {
 		$pictureModel = new PictureModel();
 		$rows = $pictureModel->readAll(20,( intval($page) - 1 ) * 20);
 		
-		$fileNames = array();
 		$contentView = new View("view/main_content.php");
 		$this->setSessionVarsToView($contentView);
 		$contentView->data = $rows;

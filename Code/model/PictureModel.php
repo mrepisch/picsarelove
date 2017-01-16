@@ -13,13 +13,15 @@ class PictureModel extends BaseModel {
 		$conn = $this->connectToDb();
 		$statement = $conn->prepare($query);
 		
-		$statement->bind_param('ssss', $p_title, $p_userID, $p_categoryID, $p_image);
+		$statement->bind_param('ssss', htmlspecialchars($p_title), $p_userID, $p_categoryID, $p_image);
 		
 		if (!$statement->execute()) {
 			throw new Exception($statement->error);
 		}
 		$conn->close();
 	}
+	
+
 	
 	
 }
