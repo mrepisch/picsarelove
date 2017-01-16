@@ -1,149 +1,61 @@
+*{
+	padding:0px;
+	margin:0px;	
+}
+
 body {
-	background-color: #EEEFF7;
+	background-color: #445878;
 	font-family: "Arial", sans-serif;
-	color: #B3B3B3;
-}
-#page {
-	display: block;
-}
-
-#delete {
-	width:50px;
-	height:50px;	
-}
-
-.previewItem {
-	list-style-type:none;
-}
-
-li span {
-    display:inline-block;
-    width:400px;
-}
-
-.previewPic {
-	max-width: 100px;
-}
-
-#arrow_left img{
-	width:100px;
-	height:100px;	
-}
-
-#content {
-	overflow: auto;
-	text-align: center;
-	background-color: #31353D;
-	width: 70%;
-	height: auto;
-	margin-left: 15%;
-	margin-right: 15%;
-	margin-top: 20px;
-}
-#comment {
-	width: 200px;
-	
-}
-#comment h6 {
-	float: left;
-	width: 50px;
-}
-#comment p {
-	float: right;
-}
-
-#register {
-	margin-left: 400px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	text-align: left;
-	width: 500px;
+	color:eeeff7;
 }
 
 
-/* Anfang basische Tags */
-
-img {
-	width: 500px;
-	height: auto;
-}
-h3 {
-	font-size: 34px;
-	margin-bottom: 20px;
-	margin-top: 20px;
-}
-h4 {
-	font-size: 16px;
-}
-h5 {
-	font-size: 14px;
-	display: inline;
-}
-p {
-	font-size: 14px;
-	display: inline;
-}
-
-/* Ende basische Tags */
-
-
-/* Anfang Navigations-Leiste */
 
 #navigation {
-	float: left;
-}
-
-ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    float:left;
+    padding-top:40px;
     width: 200px;
-    background-color: #31353D;
+    background-color: #31353d;
+    height:300%;
 }
 
-li a, .dropbtn {
-    display: block;
-    color: white;
-    padding: 5px 16px;
-    text-align: center;
+#navigation li a {
+	display: block;
+    color:#eeeff7;
+    padding: 8px 16px;
     text-decoration: none;
 }
 
-#active {
-    display: block;
-    color: white;
-    padding: 5px 16px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #1C1D21;
+#navigation li a:hover {
+    background-color: #555;
+
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #1C1D21;
+.dropdown-content{
+	margin-left:25px;	
 }
 
-li.dropdown {
-    display: block;
+.cat{
+	margin-top:20px;
+	padding: 8px 16px;
+
 }
 
-.dropdown-content {
-    display: none;
-    text-align: center;
-    background-color: #31353D;
-    min-width: 160px;
+.last_navi{
+	border-bottom:solid 1px black;	
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 5px 16px;
-    text-decoration: none;
-    display: block;
+
+#login{
+	width:100%;
+	padding:5px;
+	background-color:#31353d;	
 }
-
-.dropdown-content a:hover {background-color: #1C1D21}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+.username{
+	color:#eeeff7;
+	float:left;
+	width:200px;
+	display:inline;	
 }
-
-/* Ende Navigations-Leiste */

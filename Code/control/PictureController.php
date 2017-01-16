@@ -189,7 +189,7 @@ class PictureController {
 		$pictureModel = new PictureModel();
 		$row = $pictureModel->getByWhere('picID', $picID);
 		if ($row->userID == $userID) {
-			$pictureModel->
+			//$pictureModel->
 		}
 	}
 	

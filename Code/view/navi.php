@@ -4,17 +4,16 @@
 <?php
 ?>
 
-<div id="navigation">
-	<ul>
+<div id="navigation_area">
+	<ul id="navigation">
 		<?php if( $isLogdin == false) {?>
 		<li><a href="index.php?cont=Login&action=register_form">Register</a></li> <?php } else{?>
 		
 		<li><a href="index.php?cont=User&action=showOptions">User Verwaltung</a></li>
 		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li><?php }?>
 		<li><a href="index.php?cont=Picture&action=show">Alle anzeigen</a></li>
-		<li><a href="index.php?cont=Picture&action=show&picID=random">Zufälliges Bild</a></li>
-		<li class="dropdown">
-		<a href="#" class="dropbtn">Kategorie</a>
+		<li class="last_navi"><a href="index.php?cont=Picture&action=show&picID=random">Zufälliges Bild</a></li>
+		<li class="cat"><u>Kategorie</u>
 			<div class="dropdown-content" id="cat_drop" >
 				
 			</div>
