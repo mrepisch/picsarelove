@@ -7,7 +7,7 @@
 		<?php foreach ($data as $row) { ?>
 			<li>
 				<span><img src="<?php echo $row->imagePath ?>" class="previewPic"><p><?php echo $row->title ?></p></span>
-				<span><a src="index.php?cont=Picture&action=delete&picID=<?php echo $row->picID ?>"><img src="pictures/delete.png" id="delete"></a></span>
+				<span><a href="index.php?cont=Picture&action=delete&picID=<?php echo $row->picID ?>"><img src="pictures/delete.png" id="delete"></a></span>
 			</li>			
 		<?php } ?>
 		</ul>
