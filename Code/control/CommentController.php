@@ -1,6 +1,7 @@
 <?php
 require_once 'model/CommentModel.php';
 require_once 'lib/session.php';
+require_once 'view/View.php';
 class CommentController{
 	
 	function createNew() {
@@ -16,6 +17,7 @@ class CommentController{
 	function show_for_pic ()
 	{		
 		$commentModel = new CommentModel();
+		$session = new SessionManager();
 		$session->sessionLoad();
 		$row = $commentModel->getByWhere("f_picID", $_POST["picID"]);
 		$commentView = new View("view/comments.php");

@@ -8,8 +8,6 @@
 		</div>
 		<h3><?php echo $data->title ?></h3>
 		<img src="<?php echo $data->imagePath ?>"></img><br>
-		<h4>Kommentare (*Nummer*)</h4><br>
-
 		<div id="comments">
 			<div id="comment_content">
 			
