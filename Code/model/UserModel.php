@@ -34,5 +34,18 @@ class UserModel extends BaseModel {
         }
         $conn->close();
 	}
+	
+	public function changePassword($p_userID,$p_passwd ){
+		$query = "UPDATE $this->tableName SET password=? WHERE userID=?;";
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
+		$hash =  password_hash($p_passwd,PASSWORD_BCRYPT);
+		$statement->bind_param('ss', $hash, $p_userID);
+	
+		if (!$statement->execute()) {
+			throw new Exception($statement->error);
+		}
+		$conn->close();
+	}
 
 }

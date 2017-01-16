@@ -41,11 +41,11 @@ class CommentModel extends BaseModel {
 	 * @param int $pictureID, die ID des Bildes
 	 * @return array mit commantaren
 	 */
-	function readForPic($pictureID){
+	function readForPic($p_pictureID){
 		$query = "SELECT * FROM `comments` join user on f_userID=userID WHERE f_picID=? ;";
 		$conn = $this->connectToDb();
 		$statement = $conn->prepare($query);
-		$statement->bind_param("i",$pictureID);
+		$statement->bind_param("i",$p_pictureID);
 		if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
@@ -56,5 +56,16 @@ class CommentModel extends BaseModel {
 		}
 		$conn->close();
 		return $rows;
+	}
+	
+	function deleteForPic($p_pictureID) {
+		$query = "DELETE FROM $this->tableName WHERE f_picID=? ;";
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
+		$statement->bind_param("i",$p_pictureID);
+		if( !$statement->execute()) {
+			throw new Exception($statement->error);
+		}
+		$conn->close();
 	}
 }

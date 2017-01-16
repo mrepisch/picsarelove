@@ -106,8 +106,7 @@ class LoginController{
 	/**
 	 * Diese Funktion zeigt den View mit dem Registrirungsformular an
 	 */
-	function register_form()
-	{
+	function register_form() {
 		$session = new SessionManager();
 		$session->sessionLoad();
 		$view = new View("view/register.php");
