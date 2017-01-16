@@ -19,4 +19,21 @@ class CommentModel extends BaseModel {
         }
         $conn->close();
 	}
+	
+	function readForPic($pictureID){
+		$query = "SELECT * FROM `comments` join user on f_userID=userID WHERE f_picID=? ;";
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
+		$statement->bind_param("i",$pictureID);
+		if( !$statement->execute()) {
+			throw new Exception($statement->error);
+		}
+		$result = $statement->get_result();
+		$rows = array();
+		while( $row = $result->fetch_object()) {
+			$rows[] = $row;
+		}
+		$conn->close();
+		return $rows;
+	}
 }

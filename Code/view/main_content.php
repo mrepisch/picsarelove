@@ -3,8 +3,8 @@
 	?>
 	<div id="post">
 			<div id="arrow_left">
-			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?> "><img src="pictures/arrow_left.png" /></a>
-			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?> "><img src="pictures/arrow_right.png" /></a>
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $last->picID ?>?cat=<?php echo $data->f_categoryID?> "><img src="pictures/arrow_left.png" /></a>
+			<a href="index.php?cont=Picture&action=show&picID=<?php echo $next->picID ?>?cat=<?php echo $data->f_categoryID?>  "><img src="pictures/arrow_right.png" /></a>
 		</div>
 		<h3><?php echo $data->title ?></h3>
 		<img src="<?php echo $data->imagePath ?>"></img><br>
@@ -17,7 +17,7 @@
 			<form action="index.php" method="post">
 				<input type="hidden" name="cont" value="Comment"></input>
 				<input type="hidden" name="action" value="createNew"></input>
-				<input type="hidden" name="datatureid" value="<?php echo $data->dataID ?>" ></input>
+				<input type="hidden" name="picID" value="<?php echo $data->picID ?>" ></input>
 				<textarea rows="5" cols="30" placeholder="Hier dein Kommentar" name="text"></textarea>
 				<input type="submit" value="senden">
 			</form>

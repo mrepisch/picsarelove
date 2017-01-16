@@ -23,7 +23,7 @@ class View {
         }
     }
 	
-	function display($p_showAll = true) {
+	function display($p_showAll = true,$p_showContent = true) {
 		if( !empty($this->properties)) {
 			extract($this->properties);
 		}
@@ -31,7 +31,9 @@ class View {
 			require_once 'view/login.php';
         	require_once 'view/navi.php';
 		}
-        require_once $this->viewFile;
+		if( $p_showContent ){
+        	require_once $this->viewFile;
+		}
         
 		
 	}

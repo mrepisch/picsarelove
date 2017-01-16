@@ -45,10 +45,6 @@ class PictureController {
 	}
 	
 	function show() {
-		$page = 1;
-		if( isset( $_GET["page"])) {
-			$page = $_GET["page"];
-		}
 		$picID = 1;
 		if( isset($_GET["picID"])) {
 			$picID = $_GET["picID"];
@@ -61,8 +57,10 @@ class PictureController {
 		$pictureModel = new PictureModel();
 		if( $picID == 1) {
 			$row = $pictureModel->readAll(1);
-			$row = $row[0];
-			$picID = $row->picID;
+			if( !empty($row)){
+				$row = $row[0];
+				$picID = $row->picID;
+			}
 		}
 		else {
 			$row = $pictureModel->getByPrimaryKey($picID, "*");
@@ -80,7 +78,12 @@ class PictureController {
 		$contentView->data = $row;
 		$contentView->last = $lastPic;
 		$contentView->next = $nextPic;
-		$contentView->display();
+		if( !empty($row)){
+			$contentView->display();
+		}
+		else{
+			$contentView->display(true,false);
+		}
 	}
 	
 	

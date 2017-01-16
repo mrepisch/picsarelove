@@ -8,10 +8,11 @@ class CommentController{
 		$commentModel = new CommentModel();
 		$session = new SessionManager();
 		$session->sessionLoad();
-		$pictureID = $_POST["pictureid"];
+		$pictureID = $_POST["picID"];
 		$userID = $session->userId;
 		$text = $_POST["text"];
 		$commentModel->createNewComment($userID, $pictureID, $text);
+		header("Location:index.php?picID=$pictureID");
 	}
 	
 	function show_for_pic ()
@@ -19,9 +20,9 @@ class CommentController{
 		$commentModel = new CommentModel();
 		$session = new SessionManager();
 		$session->sessionLoad();
-		$row = $commentModel->getByWhere("f_picID", $_POST["picID"]);
+		$rows = $commentModel->readForPic($_POST["picID"]);
 		$commentView = new View("view/comments.php");
-		$commentView->data = $row;
+		$commentView->data = $rows;
 		$commentView->display(false);
 		
 	}
