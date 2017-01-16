@@ -115,12 +115,14 @@ class BaseModel {
 	 */
 	public function deleteEntry( $p_pk ) {
 		$query = "DELETE FROM $this->tableName WHERE $this->primarayKey = ?;";
-		$statement = BaseModel::connectToDb()->prepare($query);
+		$conn = $this->connectToDb();
+		$statement = $conn->prepare($query);
 		$statement->bind_param('i', $p_pk);
 			if( !$statement->execute()) {
 			throw new Exception($statement->error);
 		}
-		$conn->close();
+		
+	
 	}
 	
 	

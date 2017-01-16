@@ -59,7 +59,7 @@ class CommentModel extends BaseModel {
 	}
 	
 	function deleteForPic($p_pictureID) {
-		$query = "DELETE * FROM `comments`WHERE f_picID=? ;";
+		$query = "DELETE FROM $this->tableName WHERE f_picID=? ;";
 		$conn = $this->connectToDb();
 		$statement = $conn->prepare($query);
 		$statement->bind_param("i",$p_pictureID);

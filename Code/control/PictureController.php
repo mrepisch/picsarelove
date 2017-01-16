@@ -182,7 +182,6 @@ class PictureController {
 		if( isset($_GET["picID"])) {
 			$picID = $_GET["picID"];
 		}
-		
 		$session = new SessionManager();
 		$session->sessionLoad();
 		$sessionUserID = $session->userId;
@@ -192,14 +191,12 @@ class PictureController {
 		
 		if ($userID == $sessionUserID) {
 			$commentModel = new CommentModel();
-			$comments = $commentModel->deleteForPic($picID);
-		
+			$commentModel->deleteForPic($picID);
+			
 			$pictureModel->deleteEntry($picID);
 			header("Location:index.php?cont=User&action=showOptions");
 		}
 	}
-	
-	
 
 }
   
