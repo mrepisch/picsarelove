@@ -177,8 +177,23 @@ class PictureController {
 		
 	}
 	
+	function delete() {
+		if( isset($_GET["picID"])) {
+			$picID = $_GET["picID"];
+		}
+		
+		$session = new SessionManager();
+		$session->sessionLoad();
+		$userID = $session->userId;
+		
+		$pictureModel = new PictureModel();
+		$row = $pictureModel->getByWhere('picID', $picID);
+		if ($row->userID == $userID) {
+			$pictureModel->
+		}
+	}
 	
 	
-	
+
 }
   

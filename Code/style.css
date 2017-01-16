@@ -7,6 +7,24 @@ body {
 	display: block;
 }
 
+#delete {
+	width:50px;
+	height:50px;	
+}
+
+.previewItem {
+	list-style-type:none;
+}
+
+li span {
+    display:inline-block;
+    width:400px;
+}
+
+.previewPic {
+	max-width: 100px;
+}
+
 #arrow_left img{
 	width:100px;
 	height:100px;	

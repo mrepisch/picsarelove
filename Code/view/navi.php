@@ -9,6 +9,7 @@
 		<?php if( $isLogdin == false) {?>
 		<li><a href="index.php?cont=Login&action=register_form">Register</a></li> <?php } else{?>
 		
+		<li><a href="index.php?cont=User&action=showOptions">User Verwaltung</a></li>
 		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li><?php }?>
 		<li><a href="index.php?cont=Picture&action=show">Alle anzeigen</a></li>
 		<li><a href="index.php?cont=Picture&action=show&picID=random">Zufälliges Bild</a></li>
