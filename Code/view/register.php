@@ -1,6 +1,4 @@
-<?php
-?>
-
+<!-- View für das Registrierungsformular -->
 
 <div id="content">
 	<div id="register">

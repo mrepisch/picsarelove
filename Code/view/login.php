@@ -1,3 +1,4 @@
+<!-- Die Zeile mit dem Login falls der Benutzer nicht eingelogt ist sonst der Abmelde Button -->
 <?php if($isLogdin == false){ ?>
  <div id="login">
  	<form action="index.php" method="post">

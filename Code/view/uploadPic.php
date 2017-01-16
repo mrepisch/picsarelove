@@ -1,6 +1,6 @@
-<?php
-
-?>
+<!-- Das Upload Formular um Bilder hochzuladen. 
+	 Falls die Daten nicht valid sind wird dieses Formular mit den Fehlermeldungen angezeigt.
+ -->
 <div id="content">
 	<form method="post" action="index.php" enctype="multipart/form-data">
 		<input type="hidden" name="cont" value="Picture"></input>
@@ -15,12 +15,13 @@
 			<?php endforeach; ?>
 		</select><br>
 		<?php if(isset($_GET["noCat"])) : ?>
-			<h4>Bitte geben sie eine Kategorie ein</h4><br>
+			<h4>Bitte wählen sie eine Kategorie aus</h4><br>
 		<?php endif; ?>
 	   	<input type="submit" value="Hochladen" name="upload">
 	</form>
 </div>
 <script>
+//Script um die Kategorien in das Select Objekt zu laden.
 $.post( "index.php",{"cont":"Category", "action":"show_all"}, function( data ) {
 	  $( "#cat_drop" ).html( data );
 	});

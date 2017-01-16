@@ -1,12 +1,24 @@
 <?php
-
 require_once 'view/View.php';
 require_once 'model/PictureModel.php';
 require_once 'lib/session.php';
 require_once 'lib/Validator.php';
 require_once 'model/CategoryModel.php';
+
+/**
+ * Diese Klasse stellt den Controller für die Bilder dar.
+ * Sprich die Klasse verwaltet den Upload, und die Anzeige der Bilder.
+ * Der View der in der Regel angesprochen wird ist main_content.php
+ * @author Sascha Blank
+ *
+ */
+
 class PictureController {
 	
+	/**
+	 * Funktion um die Session Variablen in den View zu setzten 
+	 * @param View $view, der View
+	 */
 	private function setSessionVarsToView($view) {
 		$session = new SessionManager();
 		$session->sessionLoad();
@@ -14,30 +26,39 @@ class PictureController {
 		$view->userName = $session->username;
 	}
 	
+	/**
+	 * Diese Funktion ist für den Upload der Bilder zuständig. 
+	 * Es schreibt eine neue Bilddatei mit dem Bild das aus dem Formular stammt. 
+	 * Ausserdem schreibt es noch einen neuen Eintrag in die DB
+	 */
 	function upload() {
+		//Schreibe neue Bilddatei im Ordner pictures
 		$targetdir = 'pictures/';
 		$newFileName = $targetdir . uniqid() .".". pathinfo($_FILES['picture']['name'],PATHINFO_EXTENSION);
 		$targetfile = $_FILES['picture']['name'] = $newFileName;
-		echo $newFileName;
 		if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetfile)) {
 		} else {
+			
 		}
 		$session = new SessionManager();
 		$session->sessionLoad();
 		$title = $_POST["title"];
 		$categoryID = $_POST["category"];
 		$userID = $session->userId;
-		
+		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
 		if(Validator::validateCategory($categoryID)) {
 			$pictureModel = new PictureModel();
 			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
 			header("Location:index.php?cont=Picture&action=show");
 		} else {
+			//zeige formular mit Fehlermeldung nochmal an
 			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
 		}
-
 	}
 	
+	/**
+	 * Diese Funktion list alle Kategorien ein und zeigt das Upload Formular an
+	 */
 	function displayForm() {
 		$session = new SessionManager();
 		$session->sessionLoad();
@@ -50,7 +71,16 @@ class PictureController {
 		$view->display();
 	}
 	
+	/**
+	 * Diese Funktion zeigt anhand der Parameter picID und/oder categoriy ein ensprechendes Bild in der main_content.php(View) an.
+	 * Folgende Fälle existieren:
+	 * 1.)Keine ID und Kategorie angegeben
+	 * 2.)Bild ID aber keine Kategorie angegeneben
+	 * 3.)random als BildID Parameter, in diesem Fall ein zufälliges Bild wählen
+	 * 4.)Bildid und KategorieID sind agegeben.
+	 */
 	function show() {
+		//Hole zuerst die Parameter
 		$picID = 1;
 		if( isset($_GET["picID"])) {
 			$picID = $_GET["picID"];
@@ -61,6 +91,7 @@ class PictureController {
 		}
 		
 		$pictureModel = new PictureModel();
+		//Wen beide Paramter nicht gesetzt worden sind.
 		if( $picID == 1 && $category == -1 ) {
 			$row = $pictureModel->readAll(1);
 			if( !empty($row)){
@@ -69,17 +100,18 @@ class PictureController {
 			}
 		}
 		else {
+			//Bild mit spezifischer picID anzeigen
 			$row = $pictureModel->getByPrimaryKey($picID, "*");
 		}
 		if( $picID == "random" ){
+			//Fall für zufällige Bilder
 			$row = $pictureModel->readAll();
 			$randomInt = rand(0, count($row) - 1);
-			
 			$row = $row[$randomInt];
 			$picID = $row->picID;
-
 		}
 		if( $category == -1){
+			//Falls Katewgorie nicht gesetzt ist
 			$nextPic = $pictureModel->getNextPicture( $picID );
 			$lastPic = $pictureModel->getLastPicture( $picID );
 			
@@ -97,22 +129,20 @@ class PictureController {
 			}
 		}
 		else {
+			// Falls Kategorie gesetzt.
 			$index = 0;
 			$counter = 0;
 			$rows = $pictureModel->getByCategory($category);
 			$contentView = new View("view/main_content.php");
 			$this->setSessionVarsToView($contentView);
 			if( !empty($rows)){
-				
-
 				$contentView->categoryID = $category;
-				echo $picID. " PICTUREID";
 				if( $picID == 1){
-					//echo"SHIT";
+					//Falls nur Kategorie angegeben
 					$contentView->data = $rows[0];
 				}
 				else {
-
+					//Falls id und Kategorie angegeben.
 					foreach( $rows as $row){
 						if( $row->picID == $picID ){
 							$contentView->data = $row;
@@ -121,7 +151,7 @@ class PictureController {
 						$counter ++;
 					}
 				}
-
+				// Hole nächstes und vorhergehendes Bild
 				$rowCount = count($rows);
 				echo $rowCount;
 				if( $index == 0){
@@ -140,6 +170,7 @@ class PictureController {
 				$contentView->display();
 			}
 			else {
+				//Falls keine Bilder mit Kategorie ID vorhanden.
 				$contentView->display(true,false);
 			}
 		}

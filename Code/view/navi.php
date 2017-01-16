@@ -1,3 +1,6 @@
+<!-- Der View für die Navigation. 
+	 Es müssen andere Punkte dargestellt werden je nach dem ob der Benutzer eingelogt ist oder nicht 
+-->
 <?php
 ?>
 

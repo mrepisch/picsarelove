@@ -1,12 +1,26 @@
 <?php
 require_once 'model/BaseModel.php';
 
+/**
+ * Diese Klasse stellt die User Tablle als Model dar
+ * Diese Klasse erbt von BaseModel
+ * @author Sascha Blank
+ */
+
 class UserModel extends BaseModel {
 	
+	/**
+	 * Standart Konstruktor
+	 */
 	function __construct(){
 		BaseModel::__construct("user","userID");
 	}
 	
+	/**
+	 * Diese Funktion schreibt einen neuen Eintrag in die User Tabelle
+	 * @param string $p_email, die email Addresse des Benutzers
+	 * @param string $p_passwd, das Password des Benutzers(Das Password wird hier gehasht) 
+	 */
 	public function registerNewUser($p_email,$p_passwd ){
         $query = "INSERT INTO $this->tableName (username, password, privileges ) VALUES (?, ?, ?);";
         $conn = $this->connectToDb();

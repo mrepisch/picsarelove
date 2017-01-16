@@ -1,12 +1,28 @@
 <?php
 require_once 'model/BaseModel.php';
 
+/**
+ * Diese Klasse stellt das Model der Picture Tabelle dar.
+ * Diese Klasse erbt von der Klasse BaseModel
+ * @author Sascha Blank
+ *
+ */
 class PictureModel extends BaseModel {
 	
+	/**
+	 * Standart Konstruktir
+	 */
 	function __construct(){
 		BaseModel::__construct("pictures","picID");		
 	}
 	
+	/**
+	 * Diese Funktion erstellt einen neuen Eintrag in der Picture Tabelle
+	 * @param string $p_title der Titel des Bildes
+	 * @param string $p_image der Pfath auf dem Webserver zu dem Bild
+	 * @param int $p_categoryID, die ID der Categoriy Tabelle 
+	 * @param int $p_userID, die ID des Users der das Bild hochgeladen hat.
+	 */
 	function createNewEntry($p_title, $p_image, $p_categoryID, $p_userID) {
 		$query = "INSERT INTO $this->tableName (title, f_userID, f_categoryID, imagePath ) VALUES (?, ?, ?, ?);";
 		$conn = $this->connectToDb();
@@ -23,6 +39,12 @@ class PictureModel extends BaseModel {
 	}
 	
 	
+	/**
+	 * Diese Function gibt das ensprechende Record des Bildes zurueck das ein Punkt vor der uebergebenen Picture ID in der DB 
+	 * vorhanden ist.
+	 * @param int $p_pictureID, die ID des Bildes
+	 * @return object mit dem record aus der Picture Tabelle
+	 */
 	function getLastPicture($p_pictureID){
 		$row = $this->getByPrimaryKey($p_pictureID - 1,"*");
 		if(empty($row ) ){
@@ -38,6 +60,12 @@ class PictureModel extends BaseModel {
 		return $row;		
 	}
 	
+	/**
+	 * Diese Function gibt das ensprechende Record des Bildes zurueck das ein Punkt nach der uebergebenen Picture ID in der DB 
+	 * vorhanden ist.
+	 * @param int $p_picture die ID des Bildes in der Picture Tabelle
+	 * @return object mit der record aus der Picture Tabelle
+	 */
 	function getNextPicture($p_picture){
 		$row = $this->getByPrimaryKey($p_picture + 1,"*");
 		if(empty($row ) ){
@@ -53,6 +81,11 @@ class PictureModel extends BaseModel {
 		return $row;
 	}
 	
+	/**
+	 * Diese Funktion gibt alle Bilder der Picture Tabelle mit der entsprechenden Kategorie zurück.
+	 * @param int $p_categoryID, die ID der Kategorie
+	 * @return array mit records aus der Picture Tabelle
+	 */
 	function getByCategory($p_categoryID){
 		$query = "SELECT * FROM $this->tableName WHERE f_categoryID = ?;";
 		$conn = $this->connectToDb();
