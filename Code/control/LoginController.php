@@ -109,7 +109,8 @@ class LoginController{
 	}
 	
 	/**
-	 * Diese Funktion zeigt den View mit dem Registrirungsformular an
+	 * Diese Funktion zeigt den View mit dem Registrirungsformular an.
+	 * Falls Fehler im GET request vorhanden sind werden diese auch angezeigt.
 	 */
 	function register_form() {
 		$session = new SessionManager();

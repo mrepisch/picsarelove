@@ -7,9 +7,10 @@
 	</head>
 	
 	<body>
-		<img src="pictures/hacker.jpg" alt="hacker fuck off"/>
-		<?php foreach( range(0, 12) as $number ){
-			echo "<h1>I DONT LIKE YOU AND YOU.</h1>";
+
+		<?php foreach( range(0, 4) as $number ){
+			echo '<img src="pictures/hacker.jpg" alt="hacker fuck off"/>';
+			echo "<h1>I DONT LIKE YOU AND YOU SHOUD BETTER FUCK OFF.</h1>";
 			echo "<h1>HAVE FUN WITH THE POLICE.</h1>";
 			echo "<h1>IF YOU NOT WANT TO GET IN TROUBLE BUY ME A BEER.</h1>";
 		}?>

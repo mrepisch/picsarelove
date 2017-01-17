@@ -92,20 +92,18 @@ class Validator {
 	}
 	
 	static function validateVsHackyStuff($p_field){
-		if( strpos($p_field, "<script>") != 0 
-			|| strpos($p_field, "</script>") != 0 
-			|| strpos($p_field, "{") != 0 
-			|| strpos($p_field, "}") != 0 ){
+		if( stripos ($p_field, "<script>") !== false
+			|| stripos($p_field, "</script>")!== false  
+			|| stripos($p_field, "{")!== false
+			|| stripos($p_field, "}") !== false){
 			return true;	
 		}
-		if( strpos($p_field, "or 1=1") != 0 
-			|| strpos($p_field, "OR 1=1") != 0
-			|| strpos($p_field,"DROP TABLE") != 0
-			|| strpos($p_field,"drop table") != 0
-			|| strpos($p_field,"select * from user") != 0
-			|| strpos($p_field,"SELECT * FROM user") != 0
-			|| strpos($p_field,"SELECT passwd FROM user") != 0 
-			|| strpos($p_field,"select passwd from user") != 0 ) {
+
+		if( strpos($p_field, "or 1=1")!== false
+			|| stripos($p_field,"drop table") !== false
+			|| stripos($p_field,"select * from user")!== false 
+			|| stripos($p_field,"SELECT passwd FROM user")!== false
+			|| stripos($p_field,"select passwd from user")!== false) {
 			return true;
 		}
 		return false;

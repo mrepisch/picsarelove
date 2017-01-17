@@ -72,9 +72,13 @@ class Dispatcher{
 		else{
 			//Controller instanzieren und ensprechende Funktion aufrufen.
 			$fullControllerName = ucfirst( $controller ) . "Controller";
+			if( file_exists("control/$fullControllerName.php")){
 				require_once "control/$fullControllerName.php";
 					$controllerObject = new $fullControllerName();
+					if( method_exists ($controllerObject,$action)){
 						$controllerObject->$action();
+					}
+			}
 		}
 	}
 	

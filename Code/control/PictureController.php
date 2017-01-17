@@ -89,12 +89,19 @@ class PictureController {
 	function show() {
 		//Hole zuerst die Parameter
 		$picID = 1;
-		if( isset($_GET["picID"])) {
+		if( isset($_GET["picID"]) && is_numeric($_GET['picID'])) {
 			$picID = $_GET["picID"];
+			
+			if ($picID <= 0){
+				$picID = 1;
+			}
 		}
 		$category = -1;
-		if( isset( $_GET["category"] ) ) {
+		if( isset( $_GET["category"] ) && is_numeric($_GET['category'])) {
 			$category = $_GET["category"];
+			if( $category < -1){
+				$category = -1;
+			}
 		}
 		
 		$pictureModel = new PictureModel();
