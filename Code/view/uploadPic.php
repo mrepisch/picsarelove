@@ -2,7 +2,7 @@
 	 Falls die Daten nicht valid sind wird dieses Formular mit den Fehlermeldungen angezeigt.
  -->
 <div id="content">
-	<form method="post" action="index.php" enctype="multipart/form-data">
+	<form method="post" action="index.php" enctype="multipart/form-data" onsubmit="return validateUpload();">
 		<input type="hidden" name="cont" value="Picture">
 		<input type="hidden" name="action" value="upload">
 		<label for="title">Titel: </label> <input type="text" name="title" id="title"><br>
@@ -17,7 +17,7 @@
 		<?php if(isset($_GET["noCat"])) : ?>
 			<h4>Bitte wählen sie eine Kategorie aus</h4><br>
 		<?php endif; ?>
-	   	<input type="submit" value="Hochladen" name="upload">
+	   	<input type="submit" value="Hochladen" />
 	</form>
 </div>
 <script>

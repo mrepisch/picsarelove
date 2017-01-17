@@ -17,12 +17,14 @@
 				</div>
 		
 			<?php if($isLogdin == true ) {?>
-			<form class="commentInput" action="index.php" method="post">
+			<form action="index.php" method="post" onsubmit="return validateComment();">
+					<input type="hidden" name="cont" value="Comment" />
+					<input type="hidden" name="action" value="createNew">
 					<input type="hidden" name="cont" value="Comment"></input>
 					<input type="hidden" name="action" value="createNew"></input>
 					<input type="hidden" name="picID" value="<?php echo $data->picID ?>" ></input>
-					<textarea rows="5" cols="60" placeholder="Hier dein Kommentar" name="text"></textarea> <br>
-					<input type="submit" value="senden">
+					<textarea rows="5" cols="30" placeholder="Hier dein Kommentar" name="text"></textarea>
+					<input type="submit" value="Senden" />
 				</form>
 				<?php }?>
 			</div>

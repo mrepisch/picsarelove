@@ -27,17 +27,19 @@ class LoginController{
 		$result = $userModel->getByWhere("username", $email);
 		if(! empty($result)){
 			if( $result[0]->userName == $email ) {
+				
 				// Hasehs vergleichen
 				if( password_verify($passwd, $result[0]->password) ) {
+
 					$session = new SessionManager();
 					$session->sessionLoad();
 					$session->userId = $result[0]->userID;
 					$session->username = $result[0]->userName;
 					$session->isLogdin = "true";
 					header("Location:index.php");
+
 				}
-				else
-				{
+				else {
 					// Falls Passwort falsch
 					header("Location:index.php");
 				}

@@ -20,15 +20,16 @@
 		<?php } ?>
 		</table>
 	</div>
-		<div id="change_pw">
+
+	<div id="change_pw">
 		<h3>Passwort Ändern</h3><br>
-		<form method="post">
+		<form method="post" onsubmit="return validateChangePW();">
 			<input type="hidden" name="cont" value="User">
 			<input type="hidden" name="action" value="changePW">
 			<label for="oldpasswd">Altes Password:</label> <input type="password" name="oldpasswd" id="oldpasswd"><br>
 		    <label for="passwd">Neues Password:</label> <input type="password" name="passwd" id="passwd"><br>
 		    <label for="passwdrep">Password bestätigen:</label> <input type="password" name="passwdrep" id="passwdrep"><br>
-	        <input type="submit" value="Passwort Ändern">
+	        <input type="submit" value="Passwort Ändern" />
 	    </form>
     </div>
 </div>
