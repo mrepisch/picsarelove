@@ -1,6 +1,6 @@
 /**
- * Funktion um die eingegebenen Daten der Registrierung auf Vollständigkeit zu überpfrüfen
- * 
+ * Funktion prüft die Registrierung auf Vollständigkeit
+ * @author Petar Barisic
  */
 function validateRegister() {
 	var email = $("#emailreg").val();
@@ -19,8 +19,8 @@ function validateRegister() {
 }
 
 /**
- * Funktion um die eingegebenen Daten des Logins auf Vollständigkeit zu überpfrüfen
- * 
+ * Funktion prüft das Login auf Vollständigkeit
+ * @author Petar Barisic
  */
 function validateLogin() {
 	var email = $("#emaillog").val();
@@ -37,8 +37,8 @@ function validateLogin() {
 }
 
 /**
- * Funktion um die eingegebenen Daten des Uploads auf Vollständigkeit zu überpfrüfen
- * 
+ * Funktion prüft die Upload-Daten auf Vollständigkeit
+ * @author Petar Barisic
  */
 function validateUpload() {
 	var title = $("#pictitle").val();
@@ -54,8 +54,8 @@ function validateUpload() {
 }
 
 /**
- * Funktion um die eingegebenen Daten des Kommentierens auf Vollständigkeit zu überpfrüfen
- * 
+ * Funktion prüft des Kommentar auf Vollständigkeit
+ * @author Petar Barisic
  */
 function validateComment() {
 	var comment = $("#comment").val();
@@ -67,8 +67,8 @@ function validateComment() {
 }
 
 /**
- * Funktion um die eingegebenen Daten der PAsswort-änderung auf Vollständigkeit zu überpfrüfen
- * 
+ * Funktion prüft die Passwort-Änderung auf Vollständigkeit
+ * @author Petar Barisic
  */
 function validateChangePW() {
 	var password1 = $("#oldpasswd").val();
@@ -86,16 +86,18 @@ function validateChangePW() {
 
 
 /**
- * Funktion um Redudanzen der Fehleranzeige zu umgehen
- * 
+ * Funktion die bestimmte eingabefelder mithilfe der ID Rot färbt
+ * @author Petar Barisic
+ * @param String p_element
  */
 function makeRedBorder(p_element) {
 	$(p_element).css({ "border": '#FF0000 1px solid'});
 }
 
 /**
- * Funktion um Redudanzen der Email-Validierung zu umgehen
- * 
+ * Funktion prüft ob die Email im richtigen Format eingegeben wurde
+ * @author Petar Barisic
+ * @param String p_email
  */
 function validateEmail(p_email) {
 	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -107,8 +109,10 @@ function validateEmail(p_email) {
 	}
 }
 /**
- * Funktion um Redudanzen der Vollständigkeitsprüfung zu umgehen
- * 
+ * Funktion prüft ob der mitgegebene Parameter nicht leer ist
+ * @author Petar Barisic
+ * @param String p_string
+ *
  */
 function isNotEmpty(p_string) {
 	if(p_string.length > 0) {
