@@ -88,7 +88,7 @@ function validateEmail(p_email) {
 }
 
 function isNotEmpty(p_string) {
-	if(p_string > 0) {
+	if(p_string.length > 0) {
 		return true;
 	} else {
 		return false;

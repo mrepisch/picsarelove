@@ -58,6 +58,12 @@ class View {
 			extract($this->properties);
 		}
 		if( $p_showAll ) {
+			$loginError = "";
+			
+			if (isset($_GET['loginerror'])) {
+					$loginError = $_GET["loginerror"];
+			}
+			
 			require_once 'view/login.php';
         	require_once 'view/navi.php';
 		}

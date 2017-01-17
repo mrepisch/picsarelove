@@ -13,6 +13,9 @@
 		<input type="password" name="passwd" id="passwdlog">
 		<input type="submit" value="Login" />  
 	</form>
+	<div id="error">
+		<p><?php echo $loginError ?></p>
+	</div>
 	</div>
 
 <?php }else{ ?>

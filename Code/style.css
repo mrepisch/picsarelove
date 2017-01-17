@@ -195,3 +195,7 @@ textarea {
 	
 }
 
+#login_error{
+	visibility: hidden;
+}
+

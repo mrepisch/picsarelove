@@ -41,19 +41,21 @@ class LoginController{
 				}
 				else {
 					// Falls Passwort falsch
-					header("Location:index.php");
+					header("Location:index.php?loginerror=Falsches Login");
+					
 				}
 			}
 			else{
 				//Falls username falsch
-				header("Location:index.php");
+			header("Location:index.php&loginerror=Falsches Login");
 			}
 		}
 		else {
 			// Falls keine Daten vorhanden
-			header("Location:index.php");
+			header("Location:index.php&loginerror=Falsches Login");
 		}
 	}
+
 	
 	/**
 	 * Diese Funktion ist für das registrieren einen neuen Benutzers zuständig.
@@ -73,11 +75,11 @@ class LoginController{
 		{
 			//Prüefe ob email valird
 			if( Validator::isEmail($email ) == false ) {
-				// TODO:ERROR HANDLING
+				header("Location:index.php?cont=Login&action=register_form&error=Email nicht valid");
 			}
 			//Prüfe ob beide Passwörter gleich sind
 			else if( Validator::validatePassword($passwd1, $passwd2) == false ) {
-				//TODO: ERROR HANDLING
+				header("Location:index.php?cont=Login&action=register_form&error=Passwörter nicht gleich");
 			}
 			else {
 				//Schreibe neuen Benutzer in die DB
@@ -87,8 +89,9 @@ class LoginController{
 		}
 		else {
 			//Falls der Benutzer schon vorhanden ist.
-			//TODO: ERROR HANDLING
-			echo "benutzer existiert schon";
+			
+			header("Location:index.php?cont=Login&action=register_form&error=Benutzer existiert schon");
+			
 		}
 		
 	}
@@ -111,9 +114,17 @@ class LoginController{
 	function register_form() {
 		$session = new SessionManager();
 		$session->sessionLoad();
+		$registerError = "";
+		if( isset($_GET["error"])){
+			$registerError = $_GET["error"];
+		}
 		$view = new View("view/register.php");
+		$view->error = $registerError;
 		$view->isLogdin = $session->getIsLogdin();
 		$view->userName = $session->username;
 		$view->display();
 	}
+	
+	
+
 }
