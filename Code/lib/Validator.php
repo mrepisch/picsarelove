@@ -59,4 +59,13 @@ class Validator {
 			return false;
 		}
 	}
+	
+	/**
+	 * Diese Funktion prüft ob der String leer ist oder nicht.
+	 * @param string $p_string, der zu prüfende String
+	 * @retur true falls string leer ist false anderenfalls.
+	 */
+	static function isStringEmpty($p_string){
+		return strlen($p_string) > 0 ? false : true; 
+	}
 }
