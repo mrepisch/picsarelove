@@ -1,18 +1,20 @@
 <!-- Die Zeile mit dem Login falls der Benutzer nicht eingelogt ist sonst der Abmelde Button -->
-<?php if($isLogdin == false){ ?>
- <div id="login">
- 	<form action="index.php" method="post">
-	<input type="hidden" name="cont" value="Login">
-	<input type="hidden" name="action" value="login">
+<div id="header">
+	<h1 id="title">Pics are love</h1>
+	<?php if($isLogdin == false){ ?>
+ 	<div id="login">
+ 		<form action="index.php" method="post">
+		<input type="hidden" name="cont" value="Login">
+		<input type="hidden" name="action" value="login">
 	
-	<label for="emaillog">Email</label>
-	<input type="email" name="email" id="emaillog">
-	<label for="passwdlog">Passwort</label>
-	<input type="password" name="passwd" id="passwdlog">
-	<input type="submit" value="Login" />  
-	</form>
-</div>
-<?php }else{ ?>
+		<label for="emaillog">Email</label>
+		<input type="email" name="email" id="emaillog">
+		<label for="passwdlog">Passwort</label>
+		<input type="password" name="passwd" id="passwdlog">
+		<input type="submit" value="Login" />  
+		</form>
+	</div>
+	<?php }else{ ?>
  <div id="login">
  	<p class="username"><?php echo $userName ?></p>
  	<form method="post" action="index.php">
@@ -22,3 +24,4 @@
  	</form>
  </div>
 <?php } ?>
+</div>

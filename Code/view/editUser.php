@@ -2,17 +2,26 @@
 ?>
 
 <div id="content">
+
 	<div id="pictures">
-		<ul  class="previewItem">
+	
+		<table id="userConfigTable">
+		<tr>
+			<th>Bilder verwalten</th>
+		</tr>
 		<?php foreach ($data as $row) { ?>
-			<li>
-				<span><img src="<?php echo $row->imagePath ?>" class="previewPic"><p><?php echo $row->title ?></p></span>
-				<span><a href="index.php?cont=Picture&action=delete&picID=<?php echo $row->picID ?>"><img src="pictures/delete.png" id="delete"></a></span>
-			</li>			
+			<tr>
+				<td><img src="<?php echo $row->imagePath ?>" class="previewPic"></td>
+				<td><?php echo $row->title ?></td>
+				<td class="deleteCell"><a href="index.php?cont=Picture&action=delete&picID=<?php echo $row->picID ?>"><img class="deleteButton" src="pictures/delete.png" id="delete"></a></td>
+			</tr>
+		
+						
 		<?php } ?>
-		</ul>
+		</table>
 	</div>
-	<div id="register">
+		<div id="change_pw">
+		<h3>Passwort Ändern</h3><br>
 		<form method="post">
 			<input type="hidden" name="cont" value="User">
 			<input type="hidden" name="action" value="changePW">
