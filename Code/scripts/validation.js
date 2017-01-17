@@ -1,4 +1,7 @@
-
+/**
+ * Funktion um die eingegebenen Daten der Registrierung auf Vollständigkeit zu überpfrüfen
+ * 
+ */
 function validateRegister() {
 	var email = $("#emailreg").val();
 	var password1 = $("#passwdreg").val();
@@ -15,6 +18,10 @@ function validateRegister() {
 	return false;
 }
 
+/**
+ * Funktion um die eingegebenen Daten des Logins auf Vollständigkeit zu überpfrüfen
+ * 
+ */
 function validateLogin() {
 	var email = $("#emaillog").val();
 	var password = $("#passwdlog").val();
@@ -29,6 +36,10 @@ function validateLogin() {
 	return false;
 }
 
+/**
+ * Funktion um die eingegebenen Daten des Uploads auf Vollständigkeit zu überpfrüfen
+ * 
+ */
 function validateUpload() {
 	var title = $("#pictitle").val();
 	var picPath = $("#picture").val();
@@ -42,6 +53,10 @@ function validateUpload() {
 	return false;
 }
 
+/**
+ * Funktion um die eingegebenen Daten des Kommentierens auf Vollständigkeit zu überpfrüfen
+ * 
+ */
 function validateComment() {
 	var comment = $("#comment").val();
 	if(isNotEmpty(comment)) {
@@ -51,6 +66,10 @@ function validateComment() {
 	return false;
 }
 
+/**
+ * Funktion um die eingegebenen Daten der PAsswort-änderung auf Vollständigkeit zu überpfrüfen
+ * 
+ */
 function validateChangePW() {
 	var password1 = $("#oldpasswd").val();
 	var password2 = $("#passwd").val();
@@ -66,12 +85,18 @@ function validateChangePW() {
 }
 
 
-
+/**
+ * Funktion um Redudanzen der Fehleranzeige zu umgehen
+ * 
+ */
 function makeRedBorder(p_element) {
 	$(p_element).css({ "border": '#FF0000 1px solid'});
 }
 
-
+/**
+ * Funktion um Redudanzen der Email-Validierung zu umgehen
+ * 
+ */
 function validateEmail(p_email) {
 	var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	
@@ -81,7 +106,10 @@ function validateEmail(p_email) {
 		return false;
 	}
 }
-
+/**
+ * Funktion um Redudanzen der Vollständigkeitsprüfung zu umgehen
+ * 
+ */
 function isNotEmpty(p_string) {
 	if(p_string.length > 0) {
 		return true;

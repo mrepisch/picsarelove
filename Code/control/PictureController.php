@@ -50,10 +50,17 @@ class PictureController {
 		if( !Validator::isFieldNotZero($categoryID)) {
 			//zeige formular mit Fehlermeldung nochmal an
 			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+<<<<<<< HEAD
 		} else if(Validator::isStringEmpty($title)) {
 			//zeige formular mit Fehlermeldung nochmal an
 			header("Location:index.php?cont=Picture&action=displayForm");
 		} else if(Validator::isStringEmpty($targetfile)) {
+=======
+		} else if(!Validator::isStringEmpty($title)) {
+			//zeige formular mit Fehlermeldung nochmal an
+			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+		} else if(!Validator::isStringEmpty($targetfile)) {
+>>>>>>> origin/master
 			//zeige formular mit Fehlermeldung nochmal an
 			header("Location:index.php?cont=Picture&action=displayForm");
 		} else {
@@ -184,6 +191,11 @@ class PictureController {
 		}
 		
 	}
+	
+	/**
+	 * Diese Funktion löscht anhand des Parameters picID
+	 * zuerst alle dazugehörigen Kommentare und dann das Bild das ausgewählt wurde.
+	 */
 	
 	function delete() {
 		if( isset($_GET["picID"])) {
