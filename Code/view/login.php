@@ -1,15 +1,14 @@
 <!-- Die Zeile mit dem Login falls der Benutzer nicht eingelogt ist sonst der Abmelde Button -->
 <?php if($isLogdin == false){ ?>
  <div id="login">
- 	<form action="index.php" method="post">
-	<input type="hidden" name="cont" value="Login">
-	<input type="hidden" name="action" value="login">
-	
-	<label for="emaillog">Email</label>
-	<input type="email" name="email" id="emaillog">
-	<label for="passwdlog">Passwort</label>
-	<input type="password" name="passwd" id="passwdlog">
-	<input type="submit" value="Login" />  
+ 	<form action="index.php" method="post"  onsubmit="return validateLogin();">
+ 		<input type="hidden" name="cont" value="Login" />
+		<input type="hidden" name="action" value="login">
+		<label for="emaillog">Email</label>
+		<input type="email" name="email" id="emaillog">
+		<label for="passwdlog">Passwort</label>
+		<input type="password" name="passwd" id="passwdlog">
+		<input type="submit" value="Login" />
 	</form>
 </div>
 <?php }else{ ?>

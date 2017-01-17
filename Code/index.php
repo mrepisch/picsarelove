@@ -12,7 +12,7 @@ $dispatcher->dispatch();
 
 ?>
 
-
+<script language="javascript" type="text/javascript" src="scripts/validation.js"></script>
 </body>
 </html>
 <!-- -->
