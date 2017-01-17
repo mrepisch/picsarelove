@@ -15,7 +15,7 @@
 			<?php endforeach; ?>
 		</select><br>
 		<?php if(isset($_GET["noCat"])) : ?>
-			<h4>Bitte wählen sie eine Kategorie aus</h4><br>
+			<h4>Bitte füllen Sie alle Felder aus.</h4><br>
 		<?php endif; ?>
 	   	<input type="submit" value="Hochladen" />
 	</form>

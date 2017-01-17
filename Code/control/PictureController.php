@@ -47,13 +47,19 @@ class PictureController {
 		$categoryID = $_POST["category"];
 		$userID = $session->userId;
 		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
-		if(Validator::isFieldZero($categoryID)) {
+		if(!Validator::isFieldNotZero($categoryID)) {
+			//zeige formular mit Fehlermeldung nochmal an
+			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+		} else if(!Validator::isFieldNotZero($title)) {
+			//zeige formular mit Fehlermeldung nochmal an
+			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+		} else if(!Validator::isFieldNotZero($targetfile)) {
+			//zeige formular mit Fehlermeldung nochmal an
+			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+		} else {
 			$pictureModel = new PictureModel();
 			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
 			header("Location:index.php?cont=Picture&action=show");
-		} else {
-			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
 		}
 	}
 	

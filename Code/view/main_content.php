@@ -26,6 +26,7 @@
 					<textarea rows="5" cols="30" placeholder="Hier dein Kommentar" name="text"></textarea>
 					<input type="submit" value="Senden" />
 				</form>
+			<p><?php echo $errormessage ?></p>
 				<?php }?>
 			</div>
 		</div>

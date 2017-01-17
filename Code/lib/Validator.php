@@ -52,7 +52,7 @@ class Validator {
 	 * @param unknown_type $p_categoryID, der zu prüfende Wert
 	 * @return true wen der Wert des Wertes 0 ist oder anderefalls false.
 	 */
-	static function isFieldZero($p_field) {
+	static function isFieldNotZero($p_field) {
 		if($p_field != 0){
 			return true;
 		} else {
