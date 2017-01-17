@@ -40,7 +40,7 @@ function validateUpload() {
 		return true;
 	}
 
-	$('#title').css({ "border": '#FF0000 1px solid'});
+	$('#pictitle').css({ "border": '#FF0000 1px solid'});
 	$('#picture').css({ "border": '#FF0000 1px solid'});
 	$('#category').css({ "border": '#FF0000 1px solid'});
 	return false;

@@ -5,7 +5,7 @@
 	<form method="post" action="index.php" enctype="multipart/form-data" onsubmit="return validateUpload();">
 		<input type="hidden" name="cont" value="Picture">
 		<input type="hidden" name="action" value="upload">
-		<label for="title">Titel: </label> <input type="text" name="title" id="title"><br>
+		<label for="title">Titel: </label> <input type="text" name="title" id="pictitle"><br>
 		<label for="picture">Bild hochladen: </label> <input type="file" name="picture" id="picture"><br>
 		<label for="category">Kategorie: </label>
 		<select name=category id="category">
