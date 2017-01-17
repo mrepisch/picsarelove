@@ -22,7 +22,7 @@ class CommentController{
 		$pictureID = $_POST["picID"];
 		$userID = $session->userId;
 		$text = $_POST["text"];
-		if(Validator::isFieldNotZero($text)) {
+		if(!Validator::isStringEmpty($text)) {
 			$commentModel->createNewComment($userID, $pictureID, $text);
 			header("Location:index.php?picID=$pictureID");
 		} else {

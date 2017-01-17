@@ -18,7 +18,7 @@
 		</select><br>
 		<?php if(isset($_GET["noCat"])) : ?>
 			<h4>Bitte füllen Sie alle Felder aus.</h4><br>
-		<?php endif; ?>
+		<?php endif; ?> 
 	   	<input type="submit" value="Hochladen" />
 	</form>
 	</div>
