@@ -31,5 +31,6 @@
 		    <label for="passwdrep">Password bestätigen:</label> <input type="password" name="passwdrep" id="passwdrep"><br>
 	        <input type="submit" value="Passwort Ändern" />
 	    </form>
+	    <p class="error"><?php echo $config_error ?></p>
     </div>
 </div>

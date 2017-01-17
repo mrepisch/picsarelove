@@ -50,8 +50,8 @@ class View {
 	
     /**
      * Funktion die den View "zeichnet". Mit den Paramtern kann man festlegen welche Teile man "zeichnen" will.
-     * @param unknown_type $p_showAll, wenn true dann zeige alles. Also Navigation, Login, und Content.  
-     * @param unknown_type $p_showContent, wen true zeige den Content, bei falls Content nicht "zeichnen".
+     * @param boolean $p_showAll, wenn true dann zeige alles. Also Navigation, Login, und Content.  
+     * @param boolean $p_showContent, wen true zeige den Content, bei falls Content nicht "zeichnen".
      */
 	function display($p_showAll = true,$p_showContent = true) {
 		if( !empty($this->properties)) {
@@ -61,16 +61,13 @@ class View {
 			$loginError = "";
 			
 			if (isset($_GET['loginerror'])) {
-					$loginError = $_GET["loginerror"];
+				$loginError = $_GET["loginerror"];
 			}
-			
 			require_once 'view/login.php';
         	require_once 'view/navi.php';
 		}
 		if( $p_showContent ){
         	require_once $this->viewFile;
 		}
-        
-		
 	}
 }

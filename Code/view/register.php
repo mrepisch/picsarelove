@@ -11,6 +11,6 @@
 		    <label for="passwdrepreg">Password wiederholen:</label> <input type="password" name="passwdrep" id="passwdrepreg"><br>
 	        <input type="submit" value="Registrieren" />
 	    </form>
-	    <p class="error"><?php echo $error?></p>
+	    <p class="error" id="register_error"><?php echo $register_error ?></p>
     </div>
 </div>

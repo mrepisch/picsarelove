@@ -16,11 +16,9 @@
 			<option value="<?php echo $row->categoryID?>"> <?php echo $row->categoryName?></option>
 			<?php endforeach; ?>
 		</select><br>
-		<?php if(isset($_GET["noCat"])) : ?>
-			<h4>Bitte füllen Sie alle Felder aus.</h4><br>
-		<?php endif; ?> 
-	   	<input type="submit" value="Hochladen" />
+			<input type="submit" value="Hochladen" />
 	</form>
+		<p class="error" id="upload_error"><?php echo $upload_error ?></p>
 	</div>
 </div>
 <script>

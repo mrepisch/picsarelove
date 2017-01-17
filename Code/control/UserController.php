@@ -28,11 +28,17 @@ class UserController {
 	function showOptions() {
 		$session = new SessionManager();
 		$session->sessionLoad();
+		$error = "";
+		if( isset($_GET["error"]) ){
+			$error = $_GET["error"];
+		}
+		
 		$userID = $session->userId;
 		$pictureModel = new PictureModel();
 		$rows = $pictureModel->getByWhere("f_userID", $userID);
 		$userView = new View("view/editUser.php");
 		$this->setSessionVarsToView($userView, $session);
+		$userView->config_error = $error;
 		$userView->data = $rows;
 		$userView->display();
 	}
@@ -56,7 +62,7 @@ class UserController {
 				if( password_verify($passwd1, $result[0]->password) ) {
 					//Prüfe ob beide Passwörter gleich sind
 					if( Validator::validatePassword($passwd2, $passwd3) == false ) {
-						//TODO: ERROR HANDLING
+						header("Location:index.php?cont=User&action=showOptions&error=Passwörter nicht identisch");
 					} else {
 						//Schreibe neuen Benutzer in die DB
 						$userModel->changePassword($userID, $passwd2);
@@ -64,17 +70,17 @@ class UserController {
 					}
 				} else {
 					// Falls Passwort falsch
-					header("Location:index.php");
+					header("Location:index.php?cont=User&action=showOptions&error=Passwort ist nicht korrekt");
 				}
 			}
 			else{
-				//Falls username falsch
-				header("Location:index.php");
+				//Falls username falsch ist es wahrscheidlich ein hackerangriff da nur eine gültige session dies machen kann.
+				header("Location:hack.php");
 			}
 		}
 		else {
 			// Falls keine Daten vorhanden
-			header("Location:index.php");
+			header("Location:index.php?cont=User&action=showOptions&error=Keine Daten");
 		}
 	}
 	

@@ -49,13 +49,13 @@ class PictureController {
 		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
 		if( !Validator::isFieldNotZero($categoryID)) {
 			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+			header("Location:index.php?cont=Picture&action=displayForm&error=Bitte Kategorie auswählen");
 		} else if(Validator::isStringEmpty($title)) {
 			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm");
+			header("Location:index.php?cont=Picture&action=displayForm&error=Titel Feld ist leer");
 		} else if(Validator::isStringEmpty($targetfile)) {
 			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm");
+			header("Location:index.php?cont=Picture&action=displayForm&error=Keine Datei ausgewählt");
 		} else {
 			$pictureModel = new PictureModel();
 			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
@@ -72,6 +72,11 @@ class PictureController {
 		$categorys = new CategoryModel();
 		$rows = $categorys->readAll();
 		$view = new View("view/uploadPic.php");
+		$upload_error = "";
+		if( isset($_GET["error"])){
+			$upload_error = $_GET["error"];
+		}
+		$view->upload_error = $upload_error;
 		$view->rows = $rows;
 		$view->isLogdin = $session->getIsLogdin();
 		$view->userName = $session->username;

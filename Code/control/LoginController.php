@@ -120,7 +120,7 @@ class LoginController{
 			$registerError = $_GET["error"];
 		}
 		$view = new View("view/register.php");
-		$view->error = $registerError;
+		$view->register_error = $registerError;
 		$view->isLogdin = $session->getIsLogdin();
 		$view->userName = $session->username;
 		$view->display();

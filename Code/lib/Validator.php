@@ -69,6 +69,10 @@ class Validator {
 		return strlen($p_string) > 0 ? false : true; 
 	}
 	
+	/**
+	 * Diese Funktion validiert alle Parameter eines POST requests. 
+	 * @return true falls ein Parameter seltsame strings enthält anderenfals false(false == gut)
+	 */
 	static function validatePostRequest(){
 		$foundSomthing = false;
 		foreach ($_POST as $key => $value){
@@ -80,6 +84,10 @@ class Validator {
 		return $foundSomthing;
 	}
 	
+	/**
+	 * Diese Funktion validiert alle Parameter eines GET requests. 
+	 * @return true falls ein Parameter seltsame strings enthält anderenfals false(false == gut)
+	 */
 	static function validateGetRequest(){
 		$foundSomthing = false;
 		foreach ($_POST as $key => $value){
@@ -91,6 +99,11 @@ class Validator {
 		return $foundSomthing;
 	}
 	
+	/**
+	 * Diese Funktion sucht nach strings die für eine SQL Injection oder XSS gedacht sind.
+	 * @param string $p_field, das zu prüfende feld
+	 * @return true falls etwas gefunden, anderenfalls false
+	 */
 	static function validateVsHackyStuff($p_field){
 		if( stripos ($p_field, "<script>") !== false
 			|| stripos($p_field, "</script>")!== false  
@@ -98,7 +111,6 @@ class Validator {
 			|| stripos($p_field, "}") !== false){
 			return true;	
 		}
-
 		if( strpos($p_field, "or 1=1")!== false
 			|| stripos($p_field,"drop table") !== false
 			|| stripos($p_field,"select * from user")!== false 
@@ -108,6 +120,4 @@ class Validator {
 		}
 		return false;
 	}
-	
-	
 }

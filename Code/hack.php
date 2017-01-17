@@ -1,13 +1,6 @@
-<?php
-?>
-
+<!-- Anzeige für Scriptkiddis -->
 <html>
-	<head>
-	
-	</head>
-	
 	<body>
-
 		<?php foreach( range(0, 4) as $number ){
 			echo '<img src="pictures/hacker.jpg" alt="hacker fuck off"/>';
 			echo "<h1>I DONT LIKE YOU AND YOU SHOUD BETTER FUCK OFF.</h1>";
