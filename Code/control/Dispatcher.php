@@ -1,4 +1,6 @@
 <?php
+require_once 'lib/Validator.php';
+
 
 /**
  * Diese Klasse stellt den Dispatcher der Webseite dar.
@@ -29,6 +31,8 @@ class Dispatcher{
 	 * Diese Funktion instanziert den Controller und ruft die ensprechende Funktion des Controllers auf.
 	 */
 	function dispatch(){
+		
+		
 		$controller = "";
 		$action = "";
 		/**
@@ -36,6 +40,11 @@ class Dispatcher{
 		 * Hole die Parameter für Controller und dessen Funktion
 		 */
 		if( $_SERVER['REQUEST_METHOD'] === "POST" ) {
+			if( Validator::validatePostRequest() ) {
+				//HACK ATTACK
+				header("Location:hack.php");
+				return;
+			}
 			if( isset($_POST["cont"])) {
 				$controller = $_POST["cont"];
 			}
@@ -44,7 +53,11 @@ class Dispatcher{
 			}
 		}
 		else if( $_SERVER['REQUEST_METHOD'] === "GET"){
-
+			if( Validator::validateGetRequest() ){
+				//HACK ATTACK
+				header("Location:hack.php");
+				return;
+			}
 			if( isset($_GET["cont"])) {
 				$controller = $_GET["cont"];
 			}

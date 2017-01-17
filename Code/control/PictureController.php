@@ -47,15 +47,15 @@ class PictureController {
 		$categoryID = $_POST["category"];
 		$userID = $session->userId;
 		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
-		if(!Validator::isFieldNotZero($categoryID)) {
+		if( !Validator::isFieldNotZero($categoryID)) {
 			//zeige formular mit Fehlermeldung nochmal an
 			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
-		} else if(!Validator::isFieldNotZero($title)) {
+		} else if(Validator::isStringEmpty($title)) {
 			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
-		} else if(!Validator::isFieldNotZero($targetfile)) {
+			header("Location:index.php?cont=Picture&action=displayForm");
+		} else if(Validator::isStringEmpty($targetfile)) {
 			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&noCat=true");
+			header("Location:index.php?cont=Picture&action=displayForm");
 		} else {
 			$pictureModel = new PictureModel();
 			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
@@ -113,9 +113,11 @@ class PictureController {
 		if( $picID == "random" ){
 			//Fall für zufällige Bilder
 			$row = $pictureModel->readAll();
-			$randomInt = rand(0, count($row) - 1);
-			$row = $row[$randomInt];
-			$picID = $row->picID;
+			if( count($row) > 0){
+				$randomInt = rand(0, count($row) - 1);
+				$row = $row[$randomInt];
+				$picID = $row->picID;
+			}
 		}
 		if( $category == -1){
 			//Falls Katewgorie nicht gesetzt ist
@@ -197,7 +199,6 @@ class PictureController {
 		if ($userID == $sessionUserID) {
 			$commentModel = new CommentModel();
 			$commentModel->deleteForPic($picID);
-			
 			$pictureModel->deleteEntry($picID);
 			header("Location:index.php?cont=User&action=showOptions");
 		}

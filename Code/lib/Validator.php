@@ -68,4 +68,48 @@ class Validator {
 	static function isStringEmpty($p_string){
 		return strlen($p_string) > 0 ? false : true; 
 	}
+	
+	static function validatePostRequest(){
+		$foundSomthing = false;
+		foreach ($_POST as $key => $value){
+			$foundSomthing = Validator::validateVsHackyStuff($value);
+			if( $foundSomthing ){
+				return true;
+			}
+		}
+		return $foundSomthing;
+	}
+	
+	static function validateGetRequest(){
+		$foundSomthing = false;
+		foreach ($_POST as $key => $value){
+			$foundSomthing = Validator::validateVsHackyStuff($value);
+			if( $foundSomthing ){
+				return true;
+			}
+		}
+		return $foundSomthing;
+	}
+	
+	static function validateVsHackyStuff($p_field){
+		if( strpos($p_field, "<script>") != 0 
+			|| strpos($p_field, "</script>") != 0 
+			|| strpos($p_field, "{") != 0 
+			|| strpos($p_field, "}") != 0 ){
+			return true;	
+		}
+		if( strpos($p_field, "or 1=1") != 0 
+			|| strpos($p_field, "OR 1=1") != 0
+			|| strpos($p_field,"DROP TABLE") != 0
+			|| strpos($p_field,"drop table") != 0
+			|| strpos($p_field,"select * from user") != 0
+			|| strpos($p_field,"SELECT * FROM user") != 0
+			|| strpos($p_field,"SELECT passwd FROM user") != 0 
+			|| strpos($p_field,"select passwd from user") != 0 ) {
+			return true;
+		}
+		return false;
+	}
+	
+	
 }

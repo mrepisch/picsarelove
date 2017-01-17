@@ -30,10 +30,9 @@ function validateLogin() {
 }
 
 function validateUpload() {
-	var title = $("#title").val();
+	var title = $("#pictitle").val();
 	var picPath = $("#picture").val();
 	var category = $("#category").val();
-	
 	if(isNotEmpty(title) && isNotEmpty(picPath) && isNotEmpty(category)) {
 		return true;
 	}
@@ -45,7 +44,6 @@ function validateUpload() {
 
 function validateComment() {
 	var comment = $("#comment").val();
-
 	if(isNotEmpty(comment)) {
 		return true;
 	}
