@@ -1,15 +1,16 @@
 <!-- View für das Registrierungsformular -->
 
 <div id="content">
-	<div id="register">
-		<form method="post" onsubmit="return validateRegistern();">
+	<div id="register" class="form">
+		<h2>Registrieren</h2>
+		<form method="post" onsubmit="return validateRegister();">
 			<input type="hidden" name="cont" value="Login" />
 			<input type="hidden" name="action" value="register">
 		    <label for="emailreg">Email: </label> <input type="email" name="email" id="emailreg"><br>
 		    <label for="passwdreg">Password:</label> <input type="password" name="passwd" id="passwdreg"><br>
 		    <label for="passwdrepreg">Password wiederholen:</label> <input type="password" name="passwdrep" id="passwdrepreg"><br>
-	        <input type="submit" value="Register" />
+	        <input type="submit" value="Registrieren" />
 	    </form>
-	    <p><?php echo $error?></p>
+	    <p class="error"><?php echo $error?></p>
     </div>
 </div>

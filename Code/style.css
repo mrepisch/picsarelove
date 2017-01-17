@@ -21,6 +21,10 @@ body {
     height:300%;
 }
 
+h2{
+	margin-bottom:20px;	
+}
+
 #navigation li a {
 	display: block;
     color:#eeeff7;
@@ -199,3 +203,27 @@ textarea {
 	visibility: hidden;
 }
 
+.form{
+	background-color:#eeeff7;
+	color:#1c1d21;
+	width:400px;
+	text-align: center;
+	margin-top:50px;
+	margin-left:20%;
+}
+
+.form label{
+	display:block;
+}
+
+.form input{
+	margin-bottom:20px;	
+}
+
+.form select{
+		margin-bottom:20px;
+}
+
+.error{
+	color:red;	
+}

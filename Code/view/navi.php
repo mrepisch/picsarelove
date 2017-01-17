@@ -7,7 +7,7 @@
 <div id="navigation_area">
 	<ul id="navigation">
 		<?php if( $isLogdin == false) {?>
-		<li class="first_navi"><a href="index.php?cont=Login&action=register_form">Register</a></li> <?php } else{?>
+		<li class="first_navi"><a href="index.php?cont=Login&action=register_form">Registrieren</a></li> <?php } else{?>
 		
 		<li class="first_navi"><a href="index.php?cont=User&action=showOptions">User Verwaltung</a></li>
 		<li><a href="index.php?cont=Picture&action=displayForm">Bild hochladen</a></li><?php }?>

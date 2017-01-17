@@ -9,10 +9,9 @@ function validateRegister() {
 			return true;
 		}
 	}
-
-	$('#emailreg').css({ "border": '#FF0000 1px solid'});
-	$('#passwdreg').css({ "border": '#FF0000 1px solid'});
-	$('#passwdrepreg').css({ "border": '#FF0000 1px solid'});
+	makeRedBorder('#emailreg');
+	makeRedBorder('#passwdreg');
+	makeRedBorder('#passwdrepreg');
 	return false;
 }
 
@@ -25,9 +24,8 @@ function validateLogin() {
 			return true;
 		}
 	}
-
-	$('#emaillog').css({ "border": '#FF0000 1px solid'});
-	$('#passwdlog').css({ "border": '#FF0000 1px solid'});
+	makeRedBorder('#emaillog');
+	makeRedBorder('#passwdlog');
 	return false;
 }
 
@@ -39,10 +37,9 @@ function validateUpload() {
 	if(isNotEmpty(title) && isNotEmpty(picPath) && isNotEmpty(category)) {
 		return true;
 	}
-
-	$('#pictitle').css({ "border": '#FF0000 1px solid'});
-	$('#picture').css({ "border": '#FF0000 1px solid'});
-	$('#category').css({ "border": '#FF0000 1px solid'});
+	makeRedBorder('#pictitle');
+	makeRedBorder('#picture');
+	makeRedBorder('#category');
 	return false;
 }
 
@@ -52,8 +49,7 @@ function validateComment() {
 	if(isNotEmpty(comment)) {
 		return true;
 	}
-
-	$('#comment').css({ "border": '#FF0000 1px solid'});
+	makeRedBorder('#comment');
 	return false;
 }
 
@@ -65,16 +61,17 @@ function validateChangePW() {
 	if(isNotEmpty(password1) && isNotEmpty(password2) && isNotEmpty(password3)) {
 		return true;
 	}
-
-	$('#oldpasswd').css({ "border": '#FF0000 1px solid'});
-	$('#passwd').css({ "border": '#FF0000 1px solid'});
-	$('#passwdrep').css({ "border": '#FF0000 1px solid'});
+	makeRedBorder('#oldpasswd');
+	makeRedBorder('#passwd');
+	makeRedBorder('#passwdrep');
 	return false;
 }
 
 
 
-
+function makeRedBorder(p_element) {
+	$(p_element).css({ "border": '#FF0000 1px solid'});
+}
 
 
 function validateEmail(p_email) {
