@@ -38,28 +38,29 @@ class PictureController {
 		$newFileName = $targetdir . uniqid() .".". pathinfo($_FILES['picture']['name'],PATHINFO_EXTENSION);
 		$targetfile = $_FILES['picture']['name'] = $newFileName;
 		if (move_uploaded_file($_FILES['picture']['tmp_name'], $targetfile)) {
+	
+			$session = new SessionManager();
+			$session->sessionLoad();
+			$title = $_POST["title"];
+			$categoryID = $_POST["category"];
+			$userID = $session->userId;
+			//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
+			if( !Validator::isFieldNotZero($categoryID)) {
+				//zeige formular mit Fehlermeldung nochmal an
+				header("Location:index.php?cont=Picture&action=displayForm&error=Bitte Kategorie auswählen");
+			} else if(Validator::isStringEmpty($title)) {
+				//zeige formular mit Fehlermeldung nochmal an
+				header("Location:index.php?cont=Picture&action=displayForm&error=Titel Feld ist leer");
+			} else if(Validator::isStringEmpty($targetfile)) {
+				//zeige formular mit Fehlermeldung nochmal an
+				header("Location:index.php?cont=Picture&action=displayForm&error=Keine Datei ausgewählt");
+			} else {
+				$pictureModel = new PictureModel();
+				$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
+				header("Location:index.php?cont=Picture&action=show");
+			}
 		} else {
-			
-		}
-		$session = new SessionManager();
-		$session->sessionLoad();
-		$title = $_POST["title"];
-		$categoryID = $_POST["category"];
-		$userID = $session->userId;
-		//Überprüfe ob alle Werte gesetzt sind vor allem die Kategorie ist wichtig.
-		if( !Validator::isFieldNotZero($categoryID)) {
-			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&error=Bitte Kategorie auswählen");
-		} else if(Validator::isStringEmpty($title)) {
-			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&error=Titel Feld ist leer");
-		} else if(Validator::isStringEmpty($targetfile)) {
-			//zeige formular mit Fehlermeldung nochmal an
-			header("Location:index.php?cont=Picture&action=displayForm&error=Keine Datei ausgewählt");
-		} else {
-			$pictureModel = new PictureModel();
-			$pictureModel->createNewEntry($title, $targetfile, $categoryID, $userID);
-			header("Location:index.php?cont=Picture&action=show");
+			echo "shitbelt";
 		}
 	}
 	
