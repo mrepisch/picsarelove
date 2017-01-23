@@ -1,6 +1,7 @@
 <!-- Der Haupinhalt der Seite. Hier werden die Bilder Pfeile und Kommentare dargestellt -->
 <div id="content">
 <?php
+$errormessage = "";
 	?>
 
 		<div id="arrows">

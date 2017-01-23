@@ -100,6 +100,8 @@ class PictureController {
 			if ($picID <= 0){
 				$picID = 1;
 			}
+		} else if(isset($_GET["picID"])) {
+			$picID = $_GET["picID"];
 		}
 		$category = -1;
 		if( isset( $_GET["category"] ) && is_numeric($_GET['category'])) {
@@ -117,8 +119,7 @@ class PictureController {
 				$row = $row[0];
 				$picID = $row->picID;
 			}
-		}
-		else {
+		} else {
 			//Bild mit spezifischer picID anzeigen
 			$row = $pictureModel->getByPrimaryKey($picID, "*");
 		}
@@ -132,7 +133,7 @@ class PictureController {
 			}
 		}
 		if( $category == -1){
-			//Falls Katewgorie nicht gesetzt ist
+			//Falls Kategorie nicht gesetzt ist
 			$nextPic = $pictureModel->getNextPicture( $picID );
 			$lastPic = $pictureModel->getLastPicture( $picID );
 			
@@ -144,8 +145,7 @@ class PictureController {
 			$contentView->next = $nextPic;
 			if( !empty($row)){
 				$contentView->display();
-			}
-			else{
+			} else {
 				$contentView->display(true,false);
 			}
 		}
@@ -161,8 +161,7 @@ class PictureController {
 				if( $picID == 1){
 					//Falls nur Kategorie angegeben
 					$contentView->data = $rows[0];
-				}
-				else {
+				} else {
 					//Falls id und Kategorie angegeben.
 					foreach( $rows as $row){
 						if( $row->picID == $picID ){
@@ -176,20 +175,17 @@ class PictureController {
 				$rowCount = count($rows);
 				if( $index == 0){
 					$contentView->last = $rows[$rowCount - 1];
-				}
-				else{
+				} else{
 					$contentView->last = $rows[$index - 1];
 				}
 				if( $index >= $rowCount - 1){
 					$contentView->next = $rows[0];
-				}
-				else{
+				} else{
 					$contentView->next = $rows[$index + 1];	
 				}
 				$contentView->categoryID = $category;	
 				$contentView->display();
-			}
-			else {
+			} else {
 				//Falls keine Bilder mit Kategorie ID vorhanden.
 				$contentView->display(true,false);
 			}
