@@ -211,6 +211,7 @@ class PictureController {
 		$userID = $row->f_userID;
 		
 		if ($userID == $sessionUserID) {
+			unlink($row->imagePath);	
 			$commentModel = new CommentModel();
 			$commentModel->deleteForPic($picID);
 			$pictureModel->deleteEntry($picID);
