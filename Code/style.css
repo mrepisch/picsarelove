@@ -124,11 +124,14 @@ h2 {
 	display:block;	
 	
 }
-
+/*
 #login_error {
 	visibility: hidden;
 }
-
+#register_success {
+	visibility: hidden;
+}
+*/
 #comments {
 	width:50%;
 	background-color:#eeeff7;
@@ -221,4 +224,8 @@ h2 {
 
 .error {
 	color:red;	
+}
+.success {
+	color:green;
+	font-size: 32px;	
 }

@@ -37,7 +37,6 @@ class LoginController{
 					$session->username = $result[0]->userName;
 					$session->isLogdin = "true";
 					header("Location:index.php");
-
 				}
 				else {
 					// Falls Passwort falsch
@@ -71,8 +70,7 @@ class LoginController{
 		foreach( $result as $row) {
 			$counter ++;
 		}
-		if( $counter == 0)
-		{
+		if( $counter == 0) {
 			//Prüefe ob email valird
 			if( Validator::isEmail($email ) == false ) {
 				header("Location:index.php?cont=Login&action=register_form&error=Email nicht valid");
@@ -84,7 +82,7 @@ class LoginController{
 			else {
 				//Schreibe neuen Benutzer in die DB
 				$userModel->registerNewUser($email, $passwd1);
-				header("Location:index.php");
+				header("Location:index.php?cont=Login&action=register_form&error=Registrierung Erfolgreich");
 			}
 		}
 		else {
