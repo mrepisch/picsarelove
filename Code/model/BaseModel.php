@@ -31,9 +31,9 @@ class BaseModel {
 	 */
  	function connectToDb() {
 		$host		= "localhost";
-	 	$username 	= "admin";
-	 	$password	= "cpp4ever";
-	 	$dbName		= "picsarelove";
+	 	$username 	= "bblanssql1";
+	 	$password	= "Cpp4ever";
+	 	$dbName		= "bblanssql1";
 		$conn = new mysqli($host, $username, $password, $dbName);
 		if( $conn->connect_error ) {
 			die("Connection failed: " . $conn->connect_error);
